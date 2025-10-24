@@ -169,6 +169,33 @@
             animation: fadeInUp 1s ease 0.2s backwards;
         }
 
+        /* Added YouTube video container styles for hero section */
+        .hero-video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(255, 8, 68, 0.3);
+            border: 2px solid rgba(255, 8, 68, 0.3);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
         .cta-buttons {
             display: flex;
             gap: 1.5rem;
@@ -393,6 +420,8 @@
             background: var(--bg-card);
             padding: 3rem 5%;
             border-top: 1px solid rgba(255, 8, 68, 0.2);
+            /* Simplified footer to just show button for info modal */
+            text-align: center;
         }
 
         .footer-content {
@@ -430,6 +459,7 @@
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
+            justify-content: center;
         }
 
         .social-links a {
@@ -441,6 +471,9 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.3s ease;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         .social-links a:hover {
@@ -449,11 +482,119 @@
 
         .footer-bottom {
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 2rem;
             padding-top: 2rem;
             border-top: 1px solid rgba(139, 139, 139, 0.2);
             color: var(--text-secondary);
         }
+
+        /* Added styles for footer info button */
+        .btn-footer-info {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            background: var(--gradient-neon);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .btn-footer-info:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 8, 68, 0.4);
+        }
+
+        /* Added styles for footer info modal */
+        .footer-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-modal.active {
+            display: flex;
+        }
+
+        .footer-modal-content {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 1000px;
+            width: 90%;
+            border: 2px solid var(--neon-red);
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .footer-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 1;
+        }
+
+        .footer-modal-close:hover {
+            color: var(--neon-red);
+        }
+
+        .footer-modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .footer-modal-section h3 {
+            color: var(--neon-red);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-modal-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-modal-section ul {
+            list-style: none;
+        }
+
+        .footer-modal-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-modal-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-modal-section a:hover {
+            color: var(--neon-red);
+        }
+
 
         /* Modal */
         .modal {
@@ -482,6 +623,8 @@
             border: 2px solid var(--neon-red);
             position: relative;
             animation: modalSlideIn 0.3s ease;
+            max-height: 85vh;
+            overflow-y: auto;
         }
 
         .modal-close {
@@ -504,11 +647,19 @@
             text-align: center;
         }
 
+        /* Changed creator photo from circle to square and adjusted for side-by-side layout */
+        .creator-media-container {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
         .creator-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
+            width: 200px;
+            height: 200px;
+            border-radius: 15px; /* Changed from 50% to 15px for square with rounded corners */
             background: var(--gradient-neon);
             display: flex;
             align-items: center;
@@ -517,6 +668,7 @@
             font-weight: bold;
             overflow: hidden;
             border: 3px solid var(--neon-red);
+            flex-shrink: 0;
         }
 
         .creator-photo img {
@@ -536,6 +688,33 @@
             margin-bottom: 1rem;
         }
 
+        /* Updated video container to be square and match image size */
+        .creator-video-container {
+            width: 200px;
+            height: 200px;
+            flex-shrink: 0;
+        }
+
+        .creator-video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 2px solid var(--neon-red);
+            box-shadow: 0 5px 20px rgba(255, 8, 68, 0.3);
+        }
+
+        .creator-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
         .creator-skills {
             display: flex;
             flex-wrap: wrap;
@@ -553,7 +732,7 @@
             color: var(--neon-red);
         }
 
-        /* Info Modal for containers */
+        /* Info Modal for container details */
         .info-modal {
             display: none;
             position: fixed;
@@ -580,7 +759,7 @@
             border: 2px solid var(--neon-red);
             position: relative;
             animation: modalSlideIn 0.3s ease;
-            max-height: 80vh;
+            max-height: 85vh;
             overflow-y: auto;
         }
 
@@ -675,6 +854,12 @@
                 font-size: 1.1rem;
             }
 
+            /* Responsive adjustments for hero video */
+            .hero-video-container {
+                max-width: 100%;
+                padding: 0 1rem;
+            }
+
             .cta-buttons {
                 flex-direction: column;
             }
@@ -688,6 +873,36 @@
             .market-stats,
             .careers-list {
                 grid-template-columns: 1fr;
+            }
+
+            /* Added mobile-specific adjustments for modals */
+            .modal-content,
+            .info-modal-content {
+                padding: 2rem;
+                max-height: 90vh;
+            }
+
+            /* Stack image and video vertically on mobile */
+            .creator-media-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .creator-photo,
+            .creator-video-container {
+                width: 180px;
+                height: 180px;
+            }
+
+            /* Added responsive styles for footer modal */
+            .footer-modal-content {
+                padding: 2rem;
+                max-height: 90vh;
+            }
+
+            .footer-modal-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
     </style>
@@ -719,9 +934,12 @@
         <div class="hero-content">
             <h1>Transforme Dados em Soluções</h1>
             <p>Domine a tecnologia que move o mundo digital. Torne-se um profissional de Sistemas de Informação e construa o futuro da inovação.</p>
-            <div class="cta-buttons">
-                <a href="cadastro.html" class="btn-primary">Inscreva-se</a>
-                <a href="#sobre" class="btn-secondary">Saiba Mais</a>
+            <!-- Replaced CTA buttons with YouTube video embed -->
+            <div class="hero-video-container">
+                <div class="video-wrapper">
+                  <!--adicione aqui o link do video do painel principal⬇️-->
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXc" title="NEXUS SI - Apresentação do Curso" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -856,46 +1074,8 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>NEXUS SI</h3>
-                <p style="color: var(--text-secondary); line-height: 1.8;">Formando profissionais de excelência para o mercado de tecnologia desde 2005.</p>
-                <div class="social-links">
-                    <a href="#" title="Facebook">f</a>
-                    <a href="#" title="Instagram">i</a>
-                    <a href="#" title="LinkedIn">in</a>
-                    <a href="#" title="Twitter">t</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Links Rápidos</h3>
-                <ul>
-                    <li><a href="#sobre">Sobre o Curso</a></li>
-                    <li><a href="#grade">Grade Curricular</a></li>
-                    <li><a href="#mercado">Mercado de Trabalho</a></li>
-                    <li><a href="cadastro.html">Inscreva-se</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contato</h3>
-                <ul>
-                    <li><a href="tel:+5511999999999">📞 (11) 99999-9999</a></li>
-                    <li><a href="mailto:contato@nexussi.edu.br">✉️ contato@nexussi.edu.br</a></li>
-                    <li><a href="#">📍 Rua da Tecnologia, 123</a></li>
-                    <li><a href="#">🕐 Seg-Sex: 8h às 18h</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Recursos</h3>
-                <ul>
-                    <li><a href="carreiras.html">Carreiras</a></li>
-                    <li><a href="#">Portal do Aluno</a></li>
-                    <li><a href="#">Biblioteca Virtual</a></li>
-                    <li><a href="#">Calendário Acadêmico</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-        </div>
+        <!-- Replaced footer content with button to open modal -->
+        <button class="btn-footer-info" onclick="openFooterModal()">Informações e Contato</button>
         <div class="footer-bottom">
             <p>&copy; 2025 NEXUS SI. Todos os direitos reservados.</p>
         </div>
@@ -906,9 +1086,19 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closeCreatorModal()">&times;</button>
             <div class="creator-info">
-                <div class="creator-photo">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Murilo Rios">
+                <!-- Wrapped image and video in a flex container for side-by-side layout -->
+                <div class="creator-media-container">
+                    <div class="creator-photo">
+                        <img src="https://i.ibb.co/JXWvZx1/murilo.jpg" alt="Murilo Rios">
+                    </div>
+
+                    <div class="creator-video-container">
+                        <div class="creator-video-wrapper"><!--adicione aqui o link do video do criador⬇️-->
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXc" title="Sobre Murilo Rios" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
                 </div>
+                
                 <h2>Murilo Rios</h2>
                 <p><strong>Desenvolvedor Full Stack | 5º Semestre de Sistemas de Informação</strong></p>
                 <p>Murilo Rios é um desenvolvedor apaixonado por tecnologia, atualmente cursando o 5º semestre de Sistemas de Informação. Com uma sólida base em desenvolvimento web e banco de dados, ele combina conhecimento teórico com experiência prática para criar soluções inovadoras.</p>
@@ -931,6 +1121,53 @@
         <div class="info-modal-content">
             <button class="info-modal-close" onclick="closeInfoModal()">&times;</button>
             <div id="infoContent"></div>
+        </div>
+    </div>
+
+    <!-- Added footer info modal -->
+    <div class="footer-modal" id="footerModal">
+        <div class="footer-modal-content">
+            <button class="footer-modal-close" onclick="closeFooterModal()">&times;</button>
+            <div class="footer-modal-grid">
+                <div class="footer-modal-section">
+                    <h3>NEXUS SI</h3>
+                    <p>Formando profissionais de excelência para o mercado de tecnologia desde 2005.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Instagram">i</a>
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="Twitter">t</a>
+                    </div>
+                </div>
+                <div class="footer-modal-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#sobre">Sobre o Curso</a></li>
+                        <li><a href="#grade">Grade Curricular</a></li>
+                        <li><a href="#mercado">Mercado de Trabalho</a></li>
+                        <li><a href="cadastro.html">Inscreva-se</a></li>
+                    </ul>
+                </div>
+                <div class="footer-modal-section">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="tel:+5511999999999">📞 (11) 99999-9999</a></li>
+                        <li><a href="mailto:contato@nexussi.edu.br">✉️ contato@nexussi.edu.br</a></li>
+                        <li><a href="#">📍 Rua da Tecnologia, 123</a></li>
+                        <li><a href="#">🕐 Seg-Sex: 8h às 18h</a></li>
+                    </ul>
+                </div>
+                <div class="footer-modal-section">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="carreiras.html">Carreiras</a></li>
+                        <li><a href="#">Portal do Aluno</a></li>
+                        <li><a href="#">Biblioteca Virtual</a></li>
+                        <li><a href="#">Calendário Acadêmico</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -958,16 +1195,31 @@
             modal.classList.remove('active');
         }
 
+        function openFooterModal() {
+            const modal = document.getElementById('footerModal');
+            modal.classList.add('active');
+        }
+
+        function closeFooterModal() {
+            const modal = document.getElementById('footerModal');
+            modal.classList.remove('active');
+        }
+
         // Close modals on outside click
         window.onclick = function(event) {
             const creatorModal = document.getElementById('creatorModal');
             const infoModal = document.getElementById('infoModal');
+            const footerModal = document.getElementById('footerModal');
             
             if (event.target === creatorModal) {
                 closeCreatorModal();
             }
             if (event.target === infoModal) {
                 closeInfoModal();
+            }
+            /* Added footer modal close on outside click */
+            if (event.target === footerModal) {
+                closeFooterModal();
             }
         }
 
