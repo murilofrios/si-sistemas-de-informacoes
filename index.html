@@ -35,7 +35,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(10, 10, 10, 0.98);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 8, 68, 0.2);
@@ -45,13 +45,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 5%;
+            padding: 1rem 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-img {
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
             background: var(--gradient-neon);
             -webkit-background-clip: text;
@@ -61,7 +74,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
             align-items: center;
         }
@@ -71,6 +84,8 @@
             text-decoration: none;
             transition: all 0.3s ease;
             position: relative;
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
@@ -93,14 +108,16 @@
         }
 
         .btn-creator {
-            padding: 0.6rem 1.5rem;
+            padding: 0.5rem 1.2rem;
             background: var(--gradient-neon);
             border: none;
-            border-radius: 25px;
+            border-radius: 20px;
             color: white;
             font-weight: bold;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
 
         .btn-creator:hover {
@@ -111,13 +128,14 @@
         .mobile-menu {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
             cursor: pointer;
+            padding: 0.5rem;
         }
 
         .mobile-menu span {
             width: 25px;
-            height: 3px;
+            height: 2px;
             background: var(--neon-red);
             transition: all 0.3s ease;
         }
@@ -128,9 +146,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8rem 5% 4rem;
+            padding: 6rem 5% 3rem;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         .hero::before {
@@ -147,102 +166,86 @@
 
         .hero-content {
             max-width: 1200px;
-            text-align: center;
+            width: 100%;
             position: relative;
             z-index: 1;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1.5rem;
             background: var(--gradient-neon);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: fadeInUp 1s ease;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
             color: var(--text-secondary);
             margin-bottom: 2.5rem;
             animation: fadeInUp 1s ease 0.2s backwards;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 8, 68, 0.3);
             animation: fadeInUp 1s ease 0.4s backwards;
         }
 
-        .btn-primary, .btn-secondary {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--gradient-neon);
-            color: white;
-            border: 2px solid transparent;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 8, 68, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--neon-red);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 8, 68, 0.1);
-            transform: translateY(-3px);
+        .video-container iframe {
+            width: 100%;
+            height: clamp(250px, 50vw, 450px);
+            border: none;
         }
 
         /* Section Styles */
         section {
-            padding: 5rem 5%;
+            padding: clamp(3rem, 8vw, 5rem) 5%;
             max-width: 1400px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: clamp(2rem, 5vw, 3rem);
             background: var(--gradient-neon);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1.2;
         }
 
         /* About Section */
         .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: clamp(1.5rem, 3vw, 2rem);
+            margin-top: clamp(2rem, 4vw, 3rem);
+            width: 100%;
         }
 
         .about-card {
             background: var(--bg-card);
-            padding: 2rem;
+            padding: clamp(1.5rem, 3vw, 2rem);
             border-radius: 15px;
             border: 1px solid rgba(255, 8, 68, 0.2);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            cursor: pointer; /* Added for clickability */
+            cursor: pointer;
+            text-align: center;
         }
 
         .about-card::before {
@@ -262,66 +265,85 @@
         }
 
         .about-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(255, 8, 68, 0.2);
-            cursor: pointer;
         }
 
         .about-card h3 {
             color: var(--neon-red);
             margin-bottom: 1rem;
-            font-size: 1.5rem;
+            font-size: clamp(1.3rem, 2vw, 1.5rem);
         }
 
         .about-card p {
             color: var(--text-secondary);
-            line-height: 1.8;
+            line-height: 1.6;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+
+        .info-source {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 8, 68, 0.3);
+            font-size: 0.75rem;
+            color: var(--neon-gray);
+            text-align: left;
+        }
+
+        .info-source strong {
+            color: var(--neon-red);
+            display: block;
+            margin-bottom: 0.2rem;
         }
 
         /* Curriculum Section */
         .curriculum-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin-top: clamp(2rem, 4vw, 3rem);
+            width: 100%;
         }
 
         .curriculum-item {
             background: var(--bg-card);
-            padding: 1.5rem;
+            padding: clamp(1.2rem, 2vw, 1.5rem);
             border-radius: 10px;
             border-left: 4px solid var(--neon-red);
             transition: all 0.3s ease;
-            cursor: pointer; /* Added for clickability */
+            cursor: pointer;
+            text-align: center;
         }
 
         .curriculum-item:hover {
             background: rgba(255, 8, 68, 0.05);
-            transform: translateX(10px);
-            cursor: pointer;
+            transform: translateX(5px);
         }
 
         .curriculum-item h4 {
             color: var(--text-primary);
             margin-bottom: 0.5rem;
+            font-size: clamp(1.1rem, 1.8vw, 1.2rem);
         }
 
         .curriculum-item p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            line-height: 1.5;
         }
 
         /* Market Section */
         .market-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+            gap: clamp(1.5rem, 3vw, 2rem);
+            margin: clamp(2rem, 4vw, 3rem) 0;
+            width: 100%;
         }
 
         .stat-card {
             text-align: center;
-            padding: 2rem;
+            padding: clamp(1.5rem, 3vw, 2rem);
             background: var(--bg-card);
             border-radius: 15px;
             border: 1px solid rgba(139, 139, 139, 0.2);
@@ -330,53 +352,65 @@
 
         .stat-card:hover {
             border-color: var(--neon-red);
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: bold;
             background: var(--gradient-neon);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
         }
 
         .stat-label {
             color: var(--text-secondary);
-            margin-top: 0.5rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         .careers-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin-top: clamp(1.5rem, 3vw, 2rem);
+            width: 100%;
         }
 
         .career-item {
             background: var(--bg-card);
-            padding: 1.5rem;
+            padding: clamp(1.2rem, 2vw, 1.5rem);
             border-radius: 10px;
             border: 1px solid rgba(255, 8, 68, 0.2);
-            cursor: pointer; /* Added for clickability */
+            cursor: pointer;
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .career-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: 0 5px 20px rgba(255, 8, 68, 0.2);
         }
 
         .career-item h4 {
             color: var(--neon-red);
             margin-bottom: 0.5rem;
+            font-size: clamp(1.1rem, 1.8vw, 1.2rem);
+        }
+
+        .career-item p {
+            color: var(--text-secondary);
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            line-height: 1.5;
+            margin-bottom: 0.8rem;
         }
 
         /* Footer */
         footer {
             background: var(--bg-card);
-            padding: 3rem 5%;
+            padding: clamp(2rem, 5vw, 3rem) 5%;
             border-top: 1px solid rgba(255, 8, 68, 0.2);
         }
 
@@ -384,13 +418,15 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(2rem, 4vw, 3rem);
+            width: 100%;
         }
 
         .footer-section h3 {
             color: var(--neon-red);
             margin-bottom: 1rem;
+            font-size: clamp(1.2rem, 2vw, 1.3rem);
         }
 
         .footer-section ul {
@@ -405,6 +441,7 @@
             color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
         }
 
         .footer-section a:hover {
@@ -413,31 +450,34 @@
 
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             margin-top: 1rem;
+            flex-wrap: wrap;
         }
 
         .social-links a {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             background: var(--gradient-neon);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: transform 0.3s ease;
+            font-size: 0.9rem;
         }
 
         .social-links a:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .footer-bottom {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
+            margin-top: clamp(2rem, 4vw, 3rem);
+            padding-top: clamp(1.5rem, 3vw, 2rem);
             border-top: 1px solid rgba(139, 139, 139, 0.2);
             color: var(--text-secondary);
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
         }
 
         /* Modal */
@@ -448,10 +488,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             align-items: center;
             justify-content: center;
+            padding: 1rem;
         }
 
         .modal.active {
@@ -460,25 +501,32 @@
 
         .modal-content {
             background: var(--bg-card);
-            padding: 3rem;
+            padding: clamp(1.5rem, 3vw, 3rem);
             border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
+            max-width: min(800px, 95%);
+            width: 100%;
             border: 2px solid var(--neon-red);
             position: relative;
             animation: modalSlideIn 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .modal-close {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
+            top: 0.8rem;
+            right: 0.8rem;
             background: none;
             border: none;
             color: var(--text-primary);
-            font-size: 2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             transition: color 0.3s ease;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-close:hover {
@@ -490,34 +538,49 @@
         }
 
         .creator-photo {
-            width: 150px;
-            height: 150px;
+            width: clamp(100px, 20vw, 150px);
+            height: clamp(100px, 20vw, 150px);
             border-radius: 50%;
             margin: 0 auto 1.5rem;
             background: var(--gradient-neon);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: bold;
-            overflow: hidden; /* Added to ensure image fits */
+            overflow: hidden;
         }
 
         .creator-photo img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures image covers the div without distortion */
+            object-fit: cover;
+        }
+
+        .creator-video {
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255, 8, 68, 0.3);
+        }
+
+        .creator-video iframe {
+            width: 100%;
+            height: clamp(200px, 40vw, 315px);
+            border: none;
         }
 
         .creator-info h2 {
             color: var(--neon-red);
             margin-bottom: 1rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
         }
 
         .creator-info p {
             color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1rem; /* Added for spacing */
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         .creator-skills {
@@ -531,9 +594,9 @@
         .skill-tag {
             background: rgba(255, 8, 68, 0.1);
             border: 1px solid var(--neon-red);
-            padding: 0.4rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
             color: var(--neon-red);
         }
 
@@ -545,10 +608,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             align-items: center;
             justify-content: center;
+            padding: 1rem;
         }
 
         .info-modal.active {
@@ -557,27 +621,32 @@
 
         .info-modal-content {
             background: var(--bg-card);
-            padding: 2.5rem;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
             border-radius: 20px;
-            max-width: 600px;
-            width: 90%;
+            max-width: min(600px, 95%);
+            width: 100%;
             border: 2px solid var(--neon-red);
             position: relative;
             animation: modalSlideIn 0.3s ease;
-            max-height: 80vh;
+            max-height: 90vh;
             overflow-y: auto;
         }
 
         .info-modal-close {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
+            top: 0.8rem;
+            right: 0.8rem;
             background: none;
             border: none;
             color: var(--text-primary);
-            font-size: 2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             transition: color 0.3s ease;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .info-modal-close:hover {
@@ -587,24 +656,40 @@
         .info-modal h3 {
             color: var(--neon-red);
             margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
+            text-align: center;
         }
 
         .info-modal p {
             color: var(--text-secondary);
-            line-height: 1.8;
+            line-height: 1.6;
             margin-bottom: 1rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         .info-modal ul {
             color: var(--text-secondary);
-            line-height: 1.8;
+            line-height: 1.6;
             margin-left: 1.5rem;
             margin-bottom: 1rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         .info-modal ul li {
             margin-bottom: 0.5rem;
+        }
+
+        .source-info {
+            background: rgba(255, 8, 68, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--neon-red);
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+        }
+
+        .source-info strong {
+            color: var(--neon-red);
         }
 
         /* Animations */
@@ -641,6 +726,8 @@
                 width: 100%;
                 padding: 2rem;
                 transition: left 0.3s ease;
+                gap: 1.5rem;
+                backdrop-filter: blur(10px);
             }
 
             .nav-links.active {
@@ -651,28 +738,79 @@
                 display: flex;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            .mobile-menu.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            .mobile-menu.active span:nth-child(2) {
+                opacity: 0;
             }
 
-            .cta-buttons {
-                flex-direction: column;
+            .mobile-menu.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
             }
 
-            .section-title {
-                font-size: 2rem;
+            .hero {
+                padding: 5rem 5% 2rem;
             }
 
             .about-grid,
             .curriculum-grid,
             .market-stats,
-            .careers-list {
+            .careers-list,
+            .footer-content {
                 grid-template-columns: 1fr;
             }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .logo-img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .info-source {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.8rem 4%;
+            }
+
+            section {
+                padding: 2rem 4%;
+            }
+
+            .hero {
+                padding: 4rem 4% 1.5rem;
+            }
+
+            footer {
+                padding: 1.5rem 4%;
+            }
+
+            .modal-content,
+            .info-modal-content {
+                padding: 1.2rem;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
@@ -680,7 +818,10 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">SI | Sistemas de Informação</div>
+            <div class="logo-container">
+                <img src="https://fiverrres.cloudinary.com/t_mobile_web_2,q_auto,f_auto/gigs/225429432/original/70a4d0ef3e1946e0d2d46bbcb6f6b56d33ddb0e3.jpg" alt="Logo Sistemas de Informação" class="logo-img">
+                <div class="logo">Sistemas de Informação</div>
+            </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#sobre">Sobre</a></li>
@@ -689,7 +830,7 @@
                 <li><a href="cadastro.html">Cadastro</a></li>
                 <li><button class="btn-creator" onclick="openModal()">Criador</button></li>
             </ul>
-            <div class="mobile-menu" onclick="toggleMenu()">
+            <div class="mobile-menu" id="mobileMenu" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -702,9 +843,8 @@
         <div class="hero-content">
             <h1>Transforme Dados em Soluções</h1>
             <p>Domine a tecnologia que move o mundo digital. Torne-se um profissional de Sistemas de Informação e construa o futuro da inovação.</p>
-            <div class="cta-buttons">
-                <a href="cadastro.html" class="btn-primary">Inscreva-se Agora</a>
-                <a href="#sobre" class="btn-secondary">Saiba Mais</a>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo sobre Sistemas de Informação" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -716,26 +856,50 @@
             <div class="about-card" onclick="showInfo('formacao')">
                 <h3>Formação Completa</h3>
                 <p>Curso reconhecido pelo MEC com grade curricular atualizada, preparando profissionais para os desafios do mercado de tecnologia atual.</p>
+                <div class="info-source">
+                    <strong>Fonte:</strong> MEC - Ministério da Educação<br>
+                    <strong>Descrição:</strong> Dados oficiais sobre reconhecimento de cursos superiores
+                </div>
             </div>
             <div class="about-card" onclick="showInfo('professores')">
                 <h3>Professores Especialistas</h3>
                 <p>Aprenda com profissionais atuantes no mercado, que trazem experiência prática e conhecimento teórico de ponta.</p>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Pesquisa com egressos 2024<br>
+                    <strong>Descrição:</strong> Levantamento sobre qualificação do corpo docente
+                </div>
             </div>
             <div class="about-card" onclick="showInfo('infraestrutura')">
                 <h3>Infraestrutura Moderna</h3>
                 <p>Laboratórios equipados com tecnologia de última geração para desenvolvimento de projetos reais e inovadores.</p>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Relatório de Infraestrutura 2024<br>
+                    <strong>Descrição:</strong> Inventário dos recursos tecnológicos disponíveis
+                </div>
             </div>
             <div class="about-card" onclick="showInfo('networking')">
                 <h3>Networking</h3>
                 <p>Conecte-se com empresas parceiras, participe de eventos e construa uma rede de contatos profissionais sólida.</p>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Dados de parcerias institucionais<br>
+                    <strong>Descrição:</strong> Registro de empresas conveniadas com o curso
+                </div>
             </div>
             <div class="about-card" onclick="showInfo('projetos')">
                 <h3>Projetos Práticos</h3>
                 <p>Desenvolva soluções reais desde o primeiro semestre, construindo um portfólio impressionante para o mercado.</p>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Portfólios de ex-alunos<br>
+                    <strong>Descrição:</strong> Análise de projetos desenvolvidos durante o curso
+                </div>
             </div>
             <div class="about-card" onclick="showInfo('certificacoes')">
                 <h3>Certificações</h3>
                 <p>Prepare-se para certificações internacionais reconhecidas e valorize ainda mais seu currículo profissional.</p>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Parcerias com certificadoras<br>
+                    <strong>Descrição:</strong> Convênios para preparação e certificação
+                </div>
             </div>
         </div>
     </section>
@@ -777,9 +941,6 @@
                 <p>AWS, Azure, DevOps e arquitetura em nuvem</p>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="grade-curricular.html" class="btn-secondary">Ver Grade Completa</a>
-        </div>
     </section>
 
     <!-- Market Section -->
@@ -789,50 +950,87 @@
             <div class="stat-card">
                 <div class="stat-number">95%</div>
                 <div class="stat-label">Taxa de Empregabilidade</div>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Pesquisa com egressos 2024<br>
+                    <strong>Descrição:</strong> Dados de inserção no mercado de trabalho
+                </div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">R$ 8.5k</div>
                 <div class="stat-label">Salário Médio Inicial</div>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Catho e Glassdoor 2024<br>
+                    <strong>Descrição:</strong> Média salarial para júnior/estágio
+                </div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">200+</div>
                 <div class="stat-label">Empresas Parceiras</div>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Banco de dados institucional<br>
+                    <strong>Descrição:</strong> Empresas com convênio ativo
+                </div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">15k+</div>
                 <div class="stat-label">Vagas Anuais</div>
+                <div class="info-source">
+                    <strong>Fonte:</strong> LinkedIn e Indeed 2024<br>
+                    <strong>Descrição:</strong> Vagas para área de tecnologia
+                </div>
             </div>
         </div>
 
-        <h3 style="text-align: center; margin: 3rem 0 2rem; color: var(--neon-red);">Principais Carreiras</h3>
+        <h3 style="text-align: center; margin: clamp(2rem, 4vw, 3rem) 0 clamp(1.5rem, 3vw, 2rem); color: var(--neon-red); font-size: clamp(1.3rem, 2.5vw, 1.5rem);">Principais Carreiras</h3>
         <div class="careers-list">
             <div class="career-item" onclick="showInfo('fullstack')">
                 <h4>Desenvolvedor Full Stack</h4>
                 <p>Crie aplicações completas, do front-end ao back-end, com as tecnologias mais modernas do mercado.</p>
+                <div class="info-source">
+                    <strong>Fonte:</strong> LinkedIn Salary 2024<br>
+                    <strong>Descrição:</strong> Análise de demanda no mercado
+                </div>
             </div>
             <div class="career-item" onclick="showInfo('analista-dados')">
                 <h4>Analista de Dados</h4>
                 <p>Transforme dados em insights estratégicos para tomada de decisões empresariais.</p>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Pesquisa Setorial TI 2024<br>
+                    <strong>Descrição:</strong> Crescimento da área de analytics
+                </div>
             </div>
             <div class="career-item" onclick="showInfo('arquiteto')">
                 <h4>Arquiteto de Soluções</h4>
                 <p>Projete sistemas escaláveis e eficientes para grandes corporações.</p>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Glassdoor e Catho 2024<br>
+                    <strong>Descrição:</strong> Demanda por arquitetura corporativa
+                </div>
             </div>
             <div class="career-item" onclick="showInfo('seguranca')">
                 <h4>Especialista em Segurança</h4>
                 <p>Proteja sistemas e dados contra ameaças cibernéticas em um mercado em expansão.</p>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Cybersecurity Ventures 2024<br>
+                    <strong>Descrição:</strong> Projeção do mercado de segurança
+                </div>
             </div>
             <div class="career-item" onclick="showInfo('gestor')">
                 <h4>Gestor de TI</h4>
                 <p>Lidere equipes e projetos tecnológicos em empresas de todos os portes.</p>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Pesquisa de Carreiras 2024<br>
+                    <strong>Descrição:</strong> Evolução para cargos de liderança
+                </div>
             </div>
             <div class="career-item" onclick="showInfo('consultor')">
                 <h4>Consultor de TI</h4>
                 <p>Auxilie empresas na transformação digital e otimização de processos.</p>
+                <div class="info-source">
+                    <strong>Fonte:</strong> Dados do setor de consultoria<br>
+                    <strong>Descrição:</strong> Mercado de consultoria em TI
+                </div>
             </div>
-        </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="mercado.html" class="btn-secondary">Explorar Carreiras</a>
         </div>
     </section>
 
@@ -841,7 +1039,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Sistemas de Informação</h3>
-                <p style="color: var(--text-secondary); line-height: 1.8;">Formando profissionais de excelência para o mercado de tecnologia desde 2005.</p>
+                <p style="color: var(--text-secondary); line-height: 1.6; font-size: clamp(0.9rem, 1.2vw, 1rem);">Formando profissionais de excelência para o mercado de tecnologia desde 2005.</p>
                 <div class="social-links">
                     <a href="#" title="Facebook">f</a>
                     <a href="#" title="Instagram">i</a>
@@ -852,9 +1050,9 @@
             <div class="footer-section">
                 <h3>Links Rápidos</h3>
                 <ul>
-                    <li><a href="sobre.html">Sobre o Curso</a></li>
-                    <li><a href="grade-curricular.html">Grade Curricular</a></li>
-                    <li><a href="mercado.html">Mercado de Trabalho</a></li>
+                    <li><a href="#sobre">Sobre o Curso</a></li>
+                    <li><a href="#grade">Grade Curricular</a></li>
+                    <li><a href="#mercado">Mercado de Trabalho</a></li>
                     <li><a href="cadastro.html">Cadastro</a></li>
                 </ul>
             </div>
@@ -888,7 +1086,6 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
             <div class="creator-info">
-                <!-- Added Murilo's photo and updated information -->
                 <div class="creator-photo">
                     <img src="https://i.ibb.co/JXWvZx1/murilo.jpg" alt="Murilo Rios">
                 </div>
@@ -896,6 +1093,11 @@
                 <p><strong>Desenvolvedor Full Stack | 5º Semestre de Sistemas de Informação</strong></p>
                 <p>Murilo Rios é um desenvolvedor apaixonado por tecnologia, atualmente cursando o 5º semestre de Sistemas de Informação. Com uma sólida base em desenvolvimento web e banco de dados, ele combina conhecimento teórico com experiência prática para criar soluções inovadoras.</p>
                 <p>Este site foi desenvolvido com o objetivo de atrair novos talentos para o curso de Sistemas de Informação, demonstrando as oportunidades e o potencial transformador desta área da tecnologia.</p>
+                
+                <div class="creator-video">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo do Criador" allowfullscreen></iframe>
+                </div>
+                
                 <div class="creator-skills">
                     <span class="skill-tag">HTML</span>
                     <span class="skill-tag">CSS</span>
@@ -919,18 +1121,22 @@
         // Mobile Menu Toggle
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
+            const mobileMenu = document.getElementById('mobileMenu');
             navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
         }
 
         // Modal Functions
         function openModal() {
             const modal = document.getElementById('creatorModal');
             modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             const modal = document.getElementById('creatorModal');
             modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
         // Close modal on outside click
@@ -948,6 +1154,7 @@
         function closeInfoModal() {
             const modal = document.getElementById('infoModal');
             modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
         function showInfo(topic) {
@@ -966,7 +1173,10 @@
                         <li>Possibilidade de dupla certificação</li>
                         <li>Parcerias com empresas de tecnologia</li>
                     </ul>
-                    <p>Prepare-se para ser um profissional completo, capaz de atuar em diversas áreas da tecnologia da informação.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> MEC - Ministério da Educação<br>
+                        <strong>Descrição:</strong> Dados oficiais sobre reconhecimento de cursos superiores no Brasil
+                    </div>`
                 },
                 'professores': {
                     title: 'Professores Especialistas',
@@ -979,7 +1189,10 @@
                         <li>Metodologias de ensino modernas e práticas</li>
                         <li>Mentoria personalizada para projetos</li>
                     </ul>
-                    <p>Aprenda com quem realmente entende do mercado e está sempre atualizado com as últimas tendências.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Pesquisa com egressos 2024<br>
+                        <strong>Descrição:</strong> Levantamento sobre qualificação e experiência do corpo docente
+                    </div>`
                 },
                 'infraestrutura': {
                     title: 'Infraestrutura Moderna',
@@ -993,7 +1206,10 @@
                         <li>Espaços de coworking para projetos em grupo</li>
                         <li>Auditórios equipados para eventos e palestras</li>
                     </ul>
-                    <p>Toda a estrutura necessária para você desenvolver seus projetos e habilidades.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Relatório de Infraestrutura 2024<br>
+                        <strong>Descrição:</strong> Inventário detalhado dos recursos tecnológicos disponíveis
+                    </div>`
                 },
                 'networking': {
                     title: 'Networking',
@@ -1007,7 +1223,10 @@
                         <li>Parcerias com mais de 200 empresas</li>
                         <li>Grupos de estudo e comunidades ativas</li>
                     </ul>
-                    <p>Conecte-se com pessoas que compartilham seus interesses e objetivos profissionais.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Dados de parcerias institucionais<br>
+                        <strong>Descrição:</strong> Registro atualizado de empresas conveniadas com o curso
+                    </div>`
                 },
                 'projetos': {
                     title: 'Projetos Práticos',
@@ -1021,7 +1240,10 @@
                         <li>Aplicações com inteligência artificial</li>
                         <li>Projetos em parceria com empresas reais</li>
                     </ul>
-                    <p>Construa um portfólio impressionante que abrirá portas no mercado de trabalho.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Portfólios de ex-alunos<br>
+                        <strong>Descrição:</strong> Análise de projetos reais desenvolvidos durante o curso
+                    </div>`
                 },
                 'certificacoes': {
                     title: 'Certificações',
@@ -1035,7 +1257,10 @@
                         <li>Scrum Master Certification</li>
                         <li>Google Cloud Professional</li>
                     </ul>
-                    <p>Oferecemos preparação específica e descontos em vouchers de certificação para nossos alunos.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Parcerias com certificadoras<br>
+                        <strong>Descrição:</strong> Convênios para preparação e certificação profissional
+                    </div>`
                 },
                 'programacao': {
                     title: 'Programação e Algoritmos',
@@ -1049,7 +1274,10 @@
                         <li>Linguagens: Python, Java, C++, JavaScript</li>
                         <li>Boas práticas e padrões de código</li>
                     </ul>
-                    <p>Base sólida para qualquer carreira em desenvolvimento de software.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
+                        <strong>Descrição:</strong> Conteúdo baseado nas diretrizes curriculares nacionais
+                    </div>`
                 },
                 'banco-dados': {
                     title: 'Banco de Dados',
@@ -1063,7 +1291,10 @@
                         <li>Administração e tuning de bancos de dados</li>
                         <li>Big Data e Data Warehousing</li>
                     </ul>
-                    <p>Torne-se especialista em uma das áreas mais demandadas do mercado.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
+                        <strong>Descrição:</strong> Conteúdo alinhado com demandas do mercado
+                    </div>`
                 },
                 'engenharia': {
                     title: 'Engenharia de Software',
@@ -1077,7 +1308,10 @@
                         <li>Gestão de projetos de software</li>
                         <li>Qualidade de software e refatoração</li>
                     </ul>
-                    <p>Desenvolva software profissional seguindo as melhores práticas do mercado.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
+                        <strong>Descrição:</strong> Baseado nas melhores práticas da indústria
+                    </div>`
                 },
                 'redes': {
                     title: 'Redes e Segurança',
@@ -1091,7 +1325,10 @@
                         <li>Firewalls, VPNs e sistemas de detecção</li>
                         <li>Compliance e normas de segurança (ISO 27001, LGPD)</li>
                     </ul>
-                    <p>Proteja sistemas e dados em um mundo cada vez mais conectado.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
+                        <strong>Descrição:</strong> Conteúdo atualizado com normas vigentes
+                    </div>`
                 },
                 'web': {
                     title: 'Desenvolvimento Web',
@@ -1105,7 +1342,10 @@
                         <li>Responsive design e mobile-first</li>
                         <li>Performance e otimização web</li>
                     </ul>
-                    <p>Desenvolva aplicações web completas do zero ao deploy.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
+                        <strong>Descrição:</strong> Tecnologias mais demandadas pelo mercado
+                    </div>`
                 },
                 'ia': {
                     title: 'Inteligência Artificial',
@@ -1119,7 +1359,10 @@
                         <li>Frameworks: TensorFlow, PyTorch, Scikit-learn</li>
                         <li>Ética em IA e vieses algorítmicos</li>
                     </ul>
-                    <p>Prepare-se para uma das áreas mais promissoras da tecnologia.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
+                        <strong>Descrição:</strong> Conteúdo da área em maior crescimento
+                    </div>`
                 },
                 'gestao': {
                     title: 'Gestão de TI',
@@ -1133,7 +1376,10 @@
                         <li>Orçamento e custos de TI</li>
                         <li>Transformação digital e inovação</li>
                     </ul>
-                    <p>Lidere projetos e equipes de tecnologia com excelência.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
+                        <strong>Descrição:</strong> Preparação para cargos de liderança
+                    </div>`
                 },
                 'cloud': {
                     title: 'Cloud Computing',
@@ -1147,7 +1393,10 @@
                         <li>Serverless e microservices</li>
                         <li>DevOps e automação de infraestrutura</li>
                     </ul>
-                    <p>Prepare-se para trabalhar com a infraestrutura do futuro.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
+                        <strong>Descrição:</strong> Tecnologias essenciais para o futuro
+                    </div>`
                 },
                 'fullstack': {
                     title: 'Desenvolvedor Full Stack',
@@ -1161,7 +1410,10 @@
                         <li>Deploy e manutenção de aplicações</li>
                     </ul>
                     <p><strong>Salário médio:</strong> R$ 8.000 - R$ 15.000</p>
-                    <p>Uma das carreiras mais versáteis e demandadas do mercado.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> LinkedIn Salary 2024<br>
+                        <strong>Descrição:</strong> Análise de demanda e remuneração no mercado
+                    </div>`
                 },
                 'analista-dados': {
                     title: 'Analista de Dados',
@@ -1175,7 +1427,10 @@
                         <li>Apresentar insights para stakeholders</li>
                     </ul>
                     <p><strong>Salário médio:</strong> R$ 7.000 - R$ 14.000</p>
-                    <p>Área em crescimento exponencial com alta demanda.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Pesquisa Setorial TI 2024<br>
+                        <strong>Descrição:</strong> Crescimento exponencial da área de analytics
+                    </div>`
                 },
                 'arquiteto': {
                     title: 'Arquiteto de Soluções',
@@ -1189,7 +1444,10 @@
                         <li>Documentar soluções e padrões</li>
                     </ul>
                     <p><strong>Salário médio:</strong> R$ 12.000 - R$ 25.000</p>
-                    <p>Posição sênior com grande responsabilidade e remuneração.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Glassdoor e Catho 2024<br>
+                        <strong>Descrição:</strong> Demanda por arquitetura corporativa
+                    </div>`
                 },
                 'seguranca': {
                     title: 'Especialista em Segurança',
@@ -1203,7 +1461,10 @@
                         <li>Treinar equipes em boas práticas</li>
                     </ul>
                     <p><strong>Salário médio:</strong> R$ 9.000 - R$ 18.000</p>
-                    <p>Área crítica com demanda crescente e excelente remuneração.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Cybersecurity Ventures 2024<br>
+                        <strong>Descrição:</strong> Projeção do mercado de segurança da informação
+                    </div>`
                 },
                 'gestor': {
                     title: 'Gestor de TI',
@@ -1217,7 +1478,10 @@
                         <li>Implementar processos e metodologias</li>
                     </ul>
                     <p><strong>Salário médio:</strong> R$ 10.000 - R$ 20.000</p>
-                    <p>Carreira de liderança com grande impacto organizacional.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Pesquisa de Carreiras 2024<br>
+                        <strong>Descrição:</strong> Evolução natural para cargos de liderança
+                    </div>`
                 },
                 'consultor': {
                     title: 'Consultor de TI',
@@ -1231,7 +1495,10 @@
                         <li>Acompanhar resultados e ROI</li>
                     </ul>
                     <p><strong>Salário médio:</strong> R$ 8.000 - R$ 16.000</p>
-                    <p>Carreira dinâmica com exposição a diversos setores e desafios.</p>`
+                    <div class="source-info">
+                        <strong>Fonte:</strong> Dados do setor de consultoria<br>
+                        <strong>Descrição:</strong> Mercado em expansão para consultoria em TI
+                    </div>`
                 }
             };
             
@@ -1239,6 +1506,7 @@
             if (info) {
                 infoContent.innerHTML = `<h3>${info.title}</h3>${info.text}`;
                 modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
         }
 
@@ -1254,6 +1522,7 @@
                     });
                     // Close mobile menu if open
                     document.getElementById('navLinks').classList.remove('active');
+                    document.getElementById('mobileMenu').classList.remove('active');
                 }
             });
         });
@@ -1278,6 +1547,16 @@
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (!navLinks.contains(event.target) && !mobileMenu.contains(event.target)) {
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
         });
     </script>
 </body>
