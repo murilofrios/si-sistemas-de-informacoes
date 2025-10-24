@@ -703,7 +703,7 @@
                 <li><a href="#mercado">Mercado</a></li>
                 <li><a href="carreiras.html">Carreiras</a></li>
                 <li><a href="cadastro.html" class="btn-primary">Inscreva-se</a></li>
-                <li><button class="btn-creator" onclick="openModal()">Criador</button></li>
+                <li><button class="btn-creator" onclick="openCreatorModal()">Criador</button></li>
             </ul>
             <div class="mobile-menu" onclick="toggleMenu()">
                 <span></span>
@@ -904,10 +904,12 @@
     <!-- Modal -->
     <div class="modal" id="creatorModal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <button class="modal-close" onclick="closeCreatorModal()">&times;</button>
             <div class="creator-info">
                 <div class="creator-photo">
-                    <img src="https://i.ibb.co/JXWvZx1/murilo.jpg" alt="Murilo Rios">
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--gradient-neon); color: white; font-size: 3rem;">
+                        M
+                    </div>
                 </div>
                 <h2>Murilo Rios</h2>
                 <p><strong>Desenvolvedor Full Stack | 5º Semestre de Sistemas de Informação</strong></p>
@@ -939,32 +941,34 @@
             navLinks.classList.toggle('active');
         }
 
-        // Modal Functions
-        function openModal() {
+        // Creator Modal Functions - CORRIGIDAS
+        function openCreatorModal() {
             const modal = document.getElementById('creatorModal');
             modal.classList.add('active');
         }
 
-        function closeModal() {
+        function closeCreatorModal() {
             const modal = document.getElementById('creatorModal');
             modal.classList.remove('active');
         }
 
-        // Close modal on outside click
+        // Info Modal Functions
+        function closeInfoModal() {
+            const modal = document.getElementById('infoModal');
+            modal.classList.remove('active');
+        }
+
+        // Close modals on outside click
         window.onclick = function(event) {
-            const modal = document.getElementById('creatorModal');
+            const creatorModal = document.getElementById('creatorModal');
             const infoModal = document.getElementById('infoModal');
-            if (event.target === modal) {
-                closeModal();
+            
+            if (event.target === creatorModal) {
+                closeCreatorModal();
             }
             if (event.target === infoModal) {
                 closeInfoModal();
             }
-        }
-
-        function closeInfoModal() {
-            const modal = document.getElementById('infoModal');
-            modal.classList.remove('active');
         }
 
         function showInfo(topic) {
@@ -1005,4 +1009,74 @@
                     <ul>
                         <li>Laboratórios de desenvolvimento com computadores de última geração</li>
                         <li>Servidores dedicados para projetos</li>
-                        <li>Acesso a plataformas cloud (AWS, Azure, Google Cloud
+                        <li>Acesso a plataformas cloud (AWS, Azure, Google Cloud)</li>
+                        <li>Biblioteca física e digital com acervo atualizado</li>
+                        <li>Espaços de coworking para projetos em grupo</li>
+                        <li>Auditórios equipados para eventos e palestras</li>
+                    </ul>
+                    <p>Toda a estrutura necessária para você desenvolver seus projetos e habilidades.</p>`
+                },
+                // ... (resto do conteúdo permanece igual)
+                'fullstack': {
+                    title: 'Desenvolvedor Full Stack',
+                    text: `<p>Profissional completo capaz de desenvolver aplicações do front-end ao back-end.</p>
+                    <p><strong>Responsabilidades:</strong></p>
+                    <ul>
+                        <li>Desenvolver interfaces de usuário responsivas</li>
+                        <li>Criar APIs e lógica de negócio no servidor</li>
+                        <li>Gerenciar bancos de dados</li>
+                        <li>Implementar autenticação e segurança</li>
+                        <li>Deploy e manutenção de aplicações</li>
+                    </ul>
+                    <p><strong>Salário médio:</strong> R$ 8.000 - R$ 15.000</p>
+                    <p>Uma das carreiras mais versáteis e demandadas do mercado.</p>`
+                }
+            };
+            
+            const info = content[topic];
+            if (info) {
+                infoContent.innerHTML = `<h3>${info.title}</h3>${info.text}`;
+                modal.classList.add('active');
+            }
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.about-card, .curriculum-item, .stat-card, .career-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
