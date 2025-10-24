@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistemas de Informação - Transforme seu Futuro</title>
+    <title>NEXUS SI - Transforme seu Futuro</title>
     <style>
         * {
             margin: 0;
@@ -48,19 +48,6 @@
             padding: 1.2rem 5%;
             max-width: 1400px;
             margin: 0 auto;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            object-fit: cover;
         }
 
         .logo {
@@ -182,20 +169,44 @@
             animation: fadeInUp 1s ease 0.2s backwards;
         }
 
-        .video-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(255, 8, 68, 0.3);
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
             animation: fadeInUp 1s ease 0.4s backwards;
         }
 
-        .video-container iframe {
-            width: 100%;
-            height: 450px;
-            border: none;
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient-neon);
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 8, 68, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--neon-red);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 8, 68, 0.1);
+            transform: translateY(-3px);
         }
 
         /* Section Styles */
@@ -267,18 +278,6 @@
             line-height: 1.8;
         }
 
-        .info-source {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 8, 68, 0.3);
-            font-size: 0.8rem;
-            color: var(--neon-gray);
-        }
-
-        .info-source strong {
-            color: var(--neon-red);
-        }
-
         /* Curriculum Section */
         .curriculum-grid {
             display: grid;
@@ -348,6 +347,21 @@
             margin-top: 0.5rem;
         }
 
+        .stat-source {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .stat-source a {
+            color: var(--neon-red);
+            text-decoration: none;
+        }
+
+        .stat-source a:hover {
+            text-decoration: underline;
+        }
+
         .careers-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -372,10 +386,6 @@
         .career-item h4 {
             color: var(--neon-red);
             margin-bottom: 0.5rem;
-        }
-
-        .career-item p {
-            color: var(--text-secondary);
         }
 
         /* Footer */
@@ -467,13 +477,11 @@
             background: var(--bg-card);
             padding: 3rem;
             border-radius: 20px;
-            max-width: 800px;
+            max-width: 500px;
             width: 90%;
             border: 2px solid var(--neon-red);
             position: relative;
             animation: modalSlideIn 0.3s ease;
-            max-height: 80vh;
-            overflow-y: auto;
         }
 
         .modal-close {
@@ -508,25 +516,13 @@
             font-size: 3rem;
             font-weight: bold;
             overflow: hidden;
+            border: 3px solid var(--neon-red);
         }
 
         .creator-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .creator-video {
-            margin: 2rem 0;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(255, 8, 68, 0.3);
-        }
-
-        .creator-video iframe {
-            width: 100%;
-            height: 315px;
-            border: none;
         }
 
         .creator-info h2 {
@@ -627,18 +623,6 @@
             margin-bottom: 0.5rem;
         }
 
-        .source-info {
-            background: rgba(255, 8, 68, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            margin-top: 1.5rem;
-            border-left: 4px solid var(--neon-red);
-        }
-
-        .source-info strong {
-            color: var(--neon-red);
-        }
-
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -691,8 +675,8 @@
                 font-size: 1.1rem;
             }
 
-            .video-container iframe {
-                height: 250px;
+            .cta-buttons {
+                flex-direction: column;
             }
 
             .section-title {
@@ -705,19 +689,6 @@
             .careers-list {
                 grid-template-columns: 1fr;
             }
-
-            .creator-video iframe {
-                height: 250px;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .logo-img {
-                width: 35px;
-                height: 35px;
-            }
         }
     </style>
 </head>
@@ -725,17 +696,15 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo-container"><!--adicione o link da sua logo aqui-->
-                <img src="https://fiverrres.cloudinary.com/t_mobile_web_2,q_auto,f_auto/gigs/225429432/original/70a4d0ef3e1946e0d2d46bbcb6f6b56d33ddb0e3.jpg" alt="Logo Sistemas de Informação" class="logo-img">
-                <div class="logo">Sistemas de Informação</div>
-            </div>
+            <div class="logo">NEXUS SI</div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#grade">Grade</a></li>
                 <li><a href="#mercado">Mercado</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
-                <li><button class="btn-creator" onclick="openModal()">Criador</button></li>
+                <li><a href="carreiras.html">Carreiras</a></li>
+                <li><a href="cadastro.html" class="btn-primary">Inscreva-se</a></li>
+                <li><button class="btn-creator" onclick="openCreatorModal()">Criador</button></li>
             </ul>
             <div class="mobile-menu" onclick="toggleMenu()">
                 <span></span>
@@ -750,8 +719,9 @@
         <div class="hero-content">
             <h1>Transforme Dados em Soluções</h1>
             <p>Domine a tecnologia que move o mundo digital. Torne-se um profissional de Sistemas de Informação e construa o futuro da inovação.</p>
-            <div class="video-container"><!--adicione o link do seu video do youtube aqui-->
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXc" title="Vídeo sobre Sistemas de Informação" allowfullscreen></iframe>
+            <div class="cta-buttons">
+                <a href="cadastro.html" class="btn-primary">Inscreva-se</a>
+                <a href="#sobre" class="btn-secondary">Saiba Mais</a>
             </div>
         </div>
     </section>
@@ -763,50 +733,26 @@
             <div class="about-card" onclick="showInfo('formacao')">
                 <h3>Formação Completa</h3>
                 <p>Curso reconhecido pelo MEC com grade curricular atualizada, preparando profissionais para os desafios do mercado de tecnologia atual.</p>
-                <div class="info-source">
-                    <strong>Fonte:</strong> MEC - Ministério da Educação<br>
-                    <strong>Descrição:</strong> Dados oficiais sobre reconhecimento de cursos superiores
-                </div>
             </div>
             <div class="about-card" onclick="showInfo('professores')">
                 <h3>Professores Especialistas</h3>
                 <p>Aprenda com profissionais atuantes no mercado, que trazem experiência prática e conhecimento teórico de ponta.</p>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Pesquisa com egressos 2024<br>
-                    <strong>Descrição:</strong> Levantamento sobre qualificação do corpo docente
-                </div>
             </div>
             <div class="about-card" onclick="showInfo('infraestrutura')">
                 <h3>Infraestrutura Moderna</h3>
                 <p>Laboratórios equipados com tecnologia de última geração para desenvolvimento de projetos reais e inovadores.</p>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Relatório de Infraestrutura 2024<br>
-                    <strong>Descrição:</strong> Inventário dos recursos tecnológicos disponíveis
-                </div>
             </div>
             <div class="about-card" onclick="showInfo('networking')">
                 <h3>Networking</h3>
                 <p>Conecte-se com empresas parceiras, participe de eventos e construa uma rede de contatos profissionais sólida.</p>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Dados de parcerias institucionais<br>
-                    <strong>Descrição:</strong> Registro de empresas conveniadas com o curso
-                </div>
             </div>
             <div class="about-card" onclick="showInfo('projetos')">
                 <h3>Projetos Práticos</h3>
                 <p>Desenvolva soluções reais desde o primeiro semestre, construindo um portfólio impressionante para o mercado.</p>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Portfólios de ex-alunos<br>
-                    <strong>Descrição:</strong> Análise de projetos desenvolvidos durante o curso
-                </div>
             </div>
             <div class="about-card" onclick="showInfo('certificacoes')">
                 <h3>Certificações</h3>
                 <p>Prepare-se para certificações internacionais reconhecidas e valorize ainda mais seu currículo profissional.</p>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Parcerias com certificadoras<br>
-                    <strong>Descrição:</strong> Convênios para preparação e certificação
-                </div>
             </div>
         </div>
     </section>
@@ -857,34 +803,22 @@
             <div class="stat-card">
                 <div class="stat-number">95%</div>
                 <div class="stat-label">Taxa de Empregabilidade</div>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Pesquisa com egressos 2024<br>
-                    <strong>Descrição:</strong> Dados de inserção no mercado de trabalho
-                </div>
+                <div class="stat-source">Fonte: <a href="https://www.catho.com.br/pesquisa-salarial" target="_blank">Catho</a></div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">R$ 8.5k</div>
                 <div class="stat-label">Salário Médio Inicial</div>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Catho e Glassdoor 2024<br>
-                    <strong>Descrição:</strong> Média salarial para júnior/estágio
-                </div>
+                <div class="stat-source">Fonte: <a href="https://www.glassdoor.com.br" target="_blank">Glassdoor</a></div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">200+</div>
                 <div class="stat-label">Empresas Parceiras</div>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Banco de dados institucional<br>
-                    <strong>Descrição:</strong> Empresas com convênio ativo
-                </div>
+                <div class="stat-source">Fonte: <a href="https://www.linkedin.com" target="_blank">LinkedIn</a></div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">15k+</div>
                 <div class="stat-label">Vagas Anuais</div>
-                <div class="info-source">
-                    <strong>Fonte:</strong> LinkedIn e Indeed 2024<br>
-                    <strong>Descrição:</strong> Vagas para área de tecnologia
-                </div>
+                <div class="stat-source">Fonte: <a href="https://www.indeed.com" target="_blank">Indeed</a></div>
             </div>
         </div>
 
@@ -893,51 +827,30 @@
             <div class="career-item" onclick="showInfo('fullstack')">
                 <h4>Desenvolvedor Full Stack</h4>
                 <p>Crie aplicações completas, do front-end ao back-end, com as tecnologias mais modernas do mercado.</p>
-                <div class="info-source">
-                    <strong>Fonte:</strong> LinkedIn Salary 2024<br>
-                    <strong>Descrição:</strong> Análise de demanda no mercado
-                </div>
             </div>
             <div class="career-item" onclick="showInfo('analista-dados')">
                 <h4>Analista de Dados</h4>
                 <p>Transforme dados em insights estratégicos para tomada de decisões empresariais.</p>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Pesquisa Setorial TI 2024<br>
-                    <strong>Descrição:</strong> Crescimento da área de analytics
-                </div>
             </div>
             <div class="career-item" onclick="showInfo('arquiteto')">
                 <h4>Arquiteto de Soluções</h4>
                 <p>Projete sistemas escaláveis e eficientes para grandes corporações.</p>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Glassdoor e Catho 2024<br>
-                    <strong>Descrição:</strong> Demanda por arquitetura corporativa
-                </div>
             </div>
             <div class="career-item" onclick="showInfo('seguranca')">
                 <h4>Especialista em Segurança</h4>
                 <p>Proteja sistemas e dados contra ameaças cibernéticas em um mercado em expansão.</p>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Cybersecurity Ventures 2024<br>
-                    <strong>Descrição:</strong> Projeção do mercado de segurança
-                </div>
             </div>
             <div class="career-item" onclick="showInfo('gestor')">
                 <h4>Gestor de TI</h4>
                 <p>Lidere equipes e projetos tecnológicos em empresas de todos os portes.</p>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Pesquisa de Carreiras 2024<br>
-                    <strong>Descrição:</strong> Evolução para cargos de liderança
-                </div>
             </div>
             <div class="career-item" onclick="showInfo('consultor')">
                 <h4>Consultor de TI</h4>
                 <p>Auxilie empresas na transformação digital e otimização de processos.</p>
-                <div class="info-source">
-                    <strong>Fonte:</strong> Dados do setor de consultoria<br>
-                    <strong>Descrição:</strong> Mercado de consultoria em TI
-                </div>
             </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="carreiras.html" class="btn-secondary">Explorar Carreiras</a>
         </div>
     </section>
 
@@ -945,7 +858,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Sistemas de Informação</h3>
+                <h3>NEXUS SI</h3>
                 <p style="color: var(--text-secondary); line-height: 1.8;">Formando profissionais de excelência para o mercado de tecnologia desde 2005.</p>
                 <div class="social-links">
                     <a href="#" title="Facebook">f</a>
@@ -960,14 +873,14 @@
                     <li><a href="#sobre">Sobre o Curso</a></li>
                     <li><a href="#grade">Grade Curricular</a></li>
                     <li><a href="#mercado">Mercado de Trabalho</a></li>
-                    <li><a href="cadastro.html">Cadastro</a></li>
+                    <li><a href="cadastro.html">Inscreva-se</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Contato</h3>
                 <ul>
                     <li><a href="tel:+5511999999999">📞 (11) 99999-9999</a></li>
-                    <li><a href="mailto:contato@si.edu.br">✉ contato@si.edu.br</a></li>
+                    <li><a href="mailto:contato@nexussi.edu.br">✉️ contato@nexussi.edu.br</a></li>
                     <li><a href="#">📍 Rua da Tecnologia, 123</a></li>
                     <li><a href="#">🕐 Seg-Sex: 8h às 18h</a></li>
                 </ul>
@@ -975,42 +888,39 @@
             <div class="footer-section">
                 <h3>Recursos</h3>
                 <ul>
+                    <li><a href="carreiras.html">Carreiras</a></li>
                     <li><a href="#">Portal do Aluno</a></li>
                     <li><a href="#">Biblioteca Virtual</a></li>
                     <li><a href="#">Calendário Acadêmico</a></li>
                     <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Blog</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Sistemas de Informação. Todos os direitos reservados.</p>
+            <p>&copy; 2025 NEXUS SI. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <!-- Modal -->
     <div class="modal" id="creatorModal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <button class="modal-close" onclick="closeCreatorModal()">&times;</button>
             <div class="creator-info">
                 <div class="creator-photo">
-                    <img src="https://i.ibb.co/JXWvZx1/murilo.jpg" alt="Murilo Rios">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Murilo Rios">
                 </div>
                 <h2>Murilo Rios</h2>
                 <p><strong>Desenvolvedor Full Stack | 5º Semestre de Sistemas de Informação</strong></p>
                 <p>Murilo Rios é um desenvolvedor apaixonado por tecnologia, atualmente cursando o 5º semestre de Sistemas de Informação. Com uma sólida base em desenvolvimento web e banco de dados, ele combina conhecimento teórico com experiência prática para criar soluções inovadoras.</p>
                 <p>Este site foi desenvolvido com o objetivo de atrair novos talentos para o curso de Sistemas de Informação, demonstrando as oportunidades e o potencial transformador desta área da tecnologia.</p>
-                
-                <div class="creator-video"><!--adicione o link do video do youtube aqui-->
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXc" title="Vídeo do Criador" allowfullscreen></iframe>
-                </div>
-                
                 <div class="creator-skills">
                     <span class="skill-tag">HTML</span>
                     <span class="skill-tag">CSS</span>
                     <span class="skill-tag">JavaScript</span>
                     <span class="skill-tag">Python</span>
                     <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
                 </div>
             </div>
         </div>
@@ -1031,382 +941,325 @@
             navLinks.classList.toggle('active');
         }
 
-        // Modal Functions
-        function openModal() {
+        // Creator Modal Functions
+        function openCreatorModal() {
             const modal = document.getElementById('creatorModal');
             modal.classList.add('active');
         }
 
-        function closeModal() {
+        function closeCreatorModal() {
             const modal = document.getElementById('creatorModal');
             modal.classList.remove('active');
         }
 
-        // Close modal on outside click
+        // Info Modal Functions
+        function closeInfoModal() {
+            const modal = document.getElementById('infoModal');
+            modal.classList.remove('active');
+        }
+
+        // Close modals on outside click
         window.onclick = function(event) {
-            const modal = document.getElementById('creatorModal');
+            const creatorModal = document.getElementById('creatorModal');
             const infoModal = document.getElementById('infoModal');
-            if (event.target === modal) {
-                closeModal();
+            
+            if (event.target === creatorModal) {
+                closeCreatorModal();
             }
             if (event.target === infoModal) {
                 closeInfoModal();
             }
         }
 
-        function closeInfoModal() {
-            const modal = document.getElementById('infoModal');
-            modal.classList.remove('active');
-        }
+        // All info content for cards
+        const infoContent = {
+            'formacao': {
+                title: 'Formação Completa',
+                text: `<p>O curso de Sistemas de Informação é reconhecido pelo MEC e oferece uma formação completa e atualizada para o mercado de tecnologia.</p>
+                <p><strong>Diferenciais:</strong></p>
+                <ul>
+                    <li>Grade curricular alinhada com as demandas do mercado</li>
+                    <li>Duração de 4 anos (8 semestres)</li>
+                    <li>Diploma reconhecido nacionalmente</li>
+                    <li>Possibilidade de dupla certificação</li>
+                    <li>Parcerias com empresas de tecnologia</li>
+                </ul>
+                <p>Prepare-se para ser um profissional completo, capaz de atuar em diversas áreas da tecnologia da informação.</p>`
+            },
+            'professores': {
+                title: 'Professores Especialistas',
+                text: `<p>Nosso corpo docente é formado por profissionais altamente qualificados, com experiência prática no mercado e formação acadêmica de excelência.</p>
+                <p><strong>Características do corpo docente:</strong></p>
+                <ul>
+                    <li>Mestres e Doutores em suas áreas de atuação</li>
+                    <li>Profissionais atuantes em grandes empresas de tecnologia</li>
+                    <li>Experiência em projetos reais e inovadores</li>
+                    <li>Metodologias de ensino modernas e práticas</li>
+                    <li>Mentoria personalizada para projetos</li>
+                </ul>
+                <p>Aprenda com quem realmente entende do mercado e está sempre atualizado com as últimas tendências.</p>`
+            },
+            'infraestrutura': {
+                title: 'Infraestrutura Moderna',
+                text: `<p>Contamos com laboratórios equipados com tecnologia de ponta para proporcionar a melhor experiência de aprendizado.</p>
+                <p><strong>Recursos disponíveis:</strong></p>
+                <ul>
+                    <li>Laboratórios de desenvolvimento com computadores de última geração</li>
+                    <li>Servidores dedicados para projetos</li>
+                    <li>Acesso a plataformas cloud (AWS, Azure, Google Cloud)</li>
+                    <li>Biblioteca física e digital com acervo atualizado</li>
+                    <li>Espaços de coworking para projetos em grupo</li>
+                    <li>Auditórios equipados para eventos e palestras</li>
+                </ul>
+                <p>Toda a estrutura necessária para você desenvolver seus projetos e habilidades.</p>`
+            },
+            'networking': {
+                title: 'Networking',
+                text: `<p>Construa uma rede de contatos sólida que será fundamental para sua carreira profissional.</p>
+                <p><strong>Oportunidades de networking:</strong></p>
+                <ul>
+                    <li>Eventos mensais com profissionais do mercado</li>
+                    <li>Hackathons e competições de programação</li>
+                    <li>Feiras de tecnologia e inovação</li>
+                    <li>Programa de mentoria com ex-alunos</li>
+                    <li>Parcerias com mais de 200 empresas</li>
+                    <li>Grupos de estudo e comunidades ativas</li>
+                </ul>
+                <p>Conecte-se com pessoas que compartilham seus interesses e objetivos profissionais.</p>`
+            },
+            'projetos': {
+                title: 'Projetos Práticos',
+                text: `<p>Desde o primeiro semestre, você desenvolverá projetos reais que farão parte do seu portfólio profissional.</p>
+                <p><strong>Tipos de projetos:</strong></p>
+                <ul>
+                    <li>Desenvolvimento de aplicações web e mobile</li>
+                    <li>Sistemas de gerenciamento empresarial</li>
+                    <li>Projetos de análise de dados e BI</li>
+                    <li>Soluções de segurança da informação</li>
+                    <li>Aplicações com inteligência artificial</li>
+                    <li>Projetos em parceria com empresas reais</li>
+                </ul>
+                <p>Construa um portfólio impressionante que abrirá portas no mercado de trabalho.</p>`
+            },
+            'certificacoes': {
+                title: 'Certificações',
+                text: `<p>Prepare-se para obter certificações internacionais reconhecidas que valorizam seu currículo.</p>
+                <p><strong>Certificações disponíveis:</strong></p>
+                <ul>
+                    <li>AWS Certified Solutions Architect</li>
+                    <li>Microsoft Azure Fundamentals</li>
+                    <li>CompTIA Security+</li>
+                    <li>Oracle Database Administrator</li>
+                    <li>Scrum Master Certification</li>
+                    <li>Google Cloud Professional</li>
+                </ul>
+                <p>Oferecemos preparação específica e descontos em vouchers de certificação para nossos alunos.</p>`
+            },
+            'programacao': {
+                title: 'Programação e Algoritmos',
+                text: `<p>Aprenda os fundamentos da programação e desenvolva o raciocínio lógico necessário para criar soluções eficientes.</p>
+                <p><strong>Conteúdo programático:</strong></p>
+                <ul>
+                    <li>Lógica de programação e algoritmos</li>
+                    <li>Estruturas de dados (listas, pilhas, filas, árvores)</li>
+                    <li>Programação orientada a objetos</li>
+                    <li>Análise de complexidade de algoritmos</li>
+                    <li>Linguagens: Python, Java, C++, JavaScript</li>
+                    <li>Boas práticas e padrões de código</li>
+                </ul>
+                <p>Base sólida para qualquer carreira em desenvolvimento de software.</p>`
+            },
+            'banco-dados': {
+                title: 'Banco de Dados',
+                text: `<p>Domine a arte de armazenar, organizar e recuperar dados de forma eficiente e segura.</p>
+                <p><strong>Conteúdo programático:</strong></p>
+                <ul>
+                    <li>Modelagem de dados (conceitual, lógica e física)</li>
+                    <li>SQL avançado e otimização de queries</li>
+                    <li>Bancos relacionais: MySQL, PostgreSQL, Oracle</li>
+                    <li>Bancos NoSQL: MongoDB, Redis, Cassandra</li>
+                    <li>Administração e tuning de bancos de dados</li>
+                    <li>Big Data e Data Warehousing</li>
+                </ul>
+                <p>Torne-se especialista em uma das áreas mais demandadas do mercado.</p>`
+            },
+            'engenharia': {
+                title: 'Engenharia de Software',
+                text: `<p>Aprenda a desenvolver software de qualidade usando metodologias e práticas modernas.</p>
+                <p><strong>Conteúdo programático:</strong></p>
+                <ul>
+                    <li>Metodologias ágeis (Scrum, Kanban, XP)</li>
+                    <li>Arquitetura de software e design patterns</li>
+                    <li>Testes automatizados (unitários, integração, E2E)</li>
+                    <li>DevOps e CI/CD</li>
+                    <li>Gestão de projetos de software</li>
+                    <li>Qualidade de software e refatoração</li>
+                </ul>
+                <p>Desenvolva software profissional seguindo as melhores práticas do mercado.</p>`
+            },
+            'redes': {
+                title: 'Redes e Segurança',
+                text: `<p>Entenda como funcionam as redes de computadores e como proteger sistemas e dados.</p>
+                <p><strong>Conteúdo programático:</strong></p>
+                <ul>
+                    <li>Protocolos de rede (TCP/IP, HTTP, DNS)</li>
+                    <li>Configuração de redes e servidores</li>
+                    <li>Segurança da informação e criptografia</li>
+                    <li>Ethical hacking e testes de penetração</li>
+                    <li>Firewalls, VPNs e sistemas de detecção</li>
+                    <li>Compliance e normas de segurança (ISO 27001, LGPD)</li>
+                </ul>
+                <p>Proteja sistemas e dados em um mundo cada vez mais conectado.</p>`
+            },
+            'web': {
+                title: 'Desenvolvimento Web',
+                text: `<p>Crie aplicações web modernas, responsivas e escaláveis usando as tecnologias mais atuais.</p>
+                <p><strong>Conteúdo programático:</strong></p>
+                <ul>
+                    <li>HTML5, CSS3 e JavaScript moderno</li>
+                    <li>Frameworks front-end: React, Vue, Angular</li>
+                    <li>Back-end: Node.js, Python (Django/Flask), PHP</li>
+                    <li>APIs RESTful e GraphQL</li>
+                    <li>Responsive design e mobile-first</li>
+                    <li>Performance e otimização web</li>
+                </ul>
+                <p>Desenvolva aplicações web completas do zero ao deploy.</p>`
+            },
+            'ia': {
+                title: 'Inteligência Artificial',
+                text: `<p>Entre no mundo da IA e aprenda a criar sistemas inteligentes que aprendem e evoluem.</p>
+                <p><strong>Conteúdo programático:</strong></p>
+                <ul>
+                    <li>Fundamentos de Machine Learning</li>
+                    <li>Deep Learning e redes neurais</li>
+                    <li>Processamento de linguagem natural (NLP)</li>
+                    <li>Visão computacional</li>
+                    <li>Frameworks: TensorFlow, PyTorch, Scikit-learn</li>
+                    <li>Ética em IA e vieses algorítmicos</li>
+                </ul>
+                <p>Prepare-se para uma das áreas mais promissoras da tecnologia.</p>`
+            },
+            'gestao': {
+                title: 'Gestão de TI',
+                text: `<p>Desenvolva habilidades de liderança e gestão para coordenar equipes e projetos de tecnologia.</p>
+                <p><strong>Conteúdo programático:</strong></p>
+                <ul>
+                    <li>Governança de TI (COBIT, ITIL)</li>
+                    <li>Gestão de projetos (PMI, PRINCE2)</li>
+                    <li>Estratégia e planejamento de TI</li>
+                    <li>Gestão de equipes e liderança</li>
+                    <li>Orçamento e custos de TI</li>
+                    <li>Transformação digital e inovação</li>
+                </ul>
+                <p>Lidere projetos e equipes de tecnologia com excelência.</p>`
+            },
+            'cloud': {
+                title: 'Cloud Computing',
+                text: `<p>Domine as tecnologias de computação em nuvem que estão transformando a infraestrutura de TI.</p>
+                <p><strong>Conteúdo programático:</strong></p>
+                <ul>
+                    <li>Fundamentos de cloud computing</li>
+                    <li>AWS: EC2, S3, Lambda, RDS</li>
+                    <li>Microsoft Azure e Google Cloud Platform</li>
+                    <li>Containers: Docker e Kubernetes</li>
+                    <li>Serverless e microservices</li>
+                    <li>DevOps e automação de infraestrutura</li>
+                </ul>
+                <p>Prepare-se para trabalhar com a infraestrutura do futuro.</p>`
+            },
+            'fullstack': {
+                title: 'Desenvolvedor Full Stack',
+                text: `<p>Profissional completo capaz de desenvolver aplicações do front-end ao back-end.</p>
+                <p><strong>Responsabilidades:</strong></p>
+                <ul>
+                    <li>Desenvolver interfaces de usuário responsivas</li>
+                    <li>Criar APIs e lógica de negócio no servidor</li>
+                    <li>Gerenciar bancos de dados</li>
+                    <li>Implementar autenticação e segurança</li>
+                    <li>Deploy e manutenção de aplicações</li>
+                </ul>
+                <p><strong>Salário médio:</strong> R$ 8.000 - R$ 15.000</p>
+                <p>Uma das carreiras mais versáteis e demandadas do mercado.</p>`
+            },
+            'analista-dados': {
+                title: 'Analista de Dados',
+                text: `<p>Transforme dados brutos em insights valiosos para decisões estratégicas.</p>
+                <p><strong>Responsabilidades:</strong></p>
+                <ul>
+                    <li>Coletar e processar grandes volumes de dados</li>
+                    <li>Criar dashboards e visualizações</li>
+                    <li>Realizar análises estatísticas</li>
+                    <li>Desenvolver modelos preditivos</li>
+                    <li>Apresentar insights para stakeholders</li>
+                </ul>
+                <p><strong>Salário médio:</strong> R$ 7.000 - R$ 14.000</p>
+                <p>Área em crescimento exponencial com alta demanda.</p>`
+            },
+            'arquiteto': {
+                title: 'Arquiteto de Soluções',
+                text: `<p>Projete sistemas complexos, escaláveis e eficientes para grandes organizações.</p>
+                <p><strong>Responsabilidades:</strong></p>
+                <ul>
+                    <li>Definir arquitetura de sistemas</li>
+                    <li>Escolher tecnologias e ferramentas</li>
+                    <li>Garantir escalabilidade e performance</li>
+                    <li>Liderar equipes técnicas</li>
+                    <li>Documentar soluções e padrões</li>
+                </ul>
+                <p><strong>Salário médio:</strong> R$ 12.000 - R$ 25.000</p>
+                <p>Posição sênior com grande responsabilidade e remuneração.</p>`
+            },
+            'seguranca': {
+                title: 'Especialista em Segurança',
+                text: `<p>Proteja sistemas, redes e dados contra ameaças cibernéticas.</p>
+                <p><strong>Responsabilidades:</strong></p>
+                <ul>
+                    <li>Realizar testes de penetração</li>
+                    <li>Implementar políticas de segurança</li>
+                    <li>Monitorar e responder a incidentes</li>
+                    <li>Auditar sistemas e processos</li>
+                    <li>Treinar equipes em boas práticas</li>
+                </ul>
+                <p><strong>Salário médio:</strong> R$ 9.000 - R$ 18.000</p>
+                <p>Área crítica com demanda crescente e excelente remuneração.</p>`
+            },
+            'gestor': {
+                title: 'Gestor de TI',
+                text: `<p>Lidere equipes e projetos de tecnologia em empresas de todos os portes.</p>
+                <p><strong>Responsabilidades:</strong></p>
+                <ul>
+                    <li>Gerenciar equipes de desenvolvimento</li>
+                    <li>Planejar e executar projetos</li>
+                    <li>Controlar orçamentos e recursos</li>
+                    <li>Alinhar TI com objetivos de negócio</li>
+                    <li>Implementar processos e metodologias</li>
+                </ul>
+                <p><strong>Salário médio:</strong> R$ 10.000 - R$ 20.000</p>
+                <p>Carreira de liderança com grande impacto organizacional.</p>`
+            },
+            'consultor': {
+                title: 'Consultor de TI',
+                text: `<p>Auxilie empresas na transformação digital e otimização de processos.</p>
+                <p><strong>Responsabilidades:</strong></p>
+                <ul>
+                    <li>Analisar processos e sistemas atuais</li>
+                    <li>Propor soluções tecnológicas</li>
+                    <li>Implementar melhorias e inovações</li>
+                    <li>Treinar equipes e usuários</li>
+                    <li>Acompanhar resultados e ROI</li>
+                </ul>
+                <p><strong>Salário médio:</strong> R$ 8.000 - R$ 16.000</p>
+                <p>Carreira dinâmica com exposição a diversos setores e desafios.</p>`
+            }
+        };
 
         function showInfo(topic) {
-            const infoContent = document.getElementById('infoContent');
+            const contentDiv = document.getElementById('infoContent');
             const modal = document.getElementById('infoModal');
             
-            const content = {
-                'formacao': {
-                    title: 'Formação Completa',
-                    text: `<p>O curso de Sistemas de Informação é reconhecido pelo MEC e oferece uma formação completa e atualizada para o mercado de tecnologia.</p>
-                    <p><strong>Diferenciais:</strong></p>
-                    <ul>
-                        <li>Grade curricular alinhada com as demandas do mercado</li>
-                        <li>Duração de 4 anos (8 semestres)</li>
-                        <li>Diploma reconhecido nacionalmente</li>
-                        <li>Possibilidade de dupla certificação</li>
-                        <li>Parcerias com empresas de tecnologia</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> MEC - Ministério da Educação<br>
-                        <strong>Descrição:</strong> Dados oficiais sobre reconhecimento de cursos superiores no Brasil
-                    </div>`
-                },
-                'professores': {
-                    title: 'Professores Especialistas',
-                    text: `<p>Nosso corpo docente é formado por profissionais altamente qualificados, com experiência prática no mercado e formação acadêmica de excelência.</p>
-                    <p><strong>Características do corpo docente:</strong></p>
-                    <ul>
-                        <li>Mestres e Doutores em suas áreas de atuação</li>
-                        <li>Profissionais atuantes em grandes empresas de tecnologia</li>
-                        <li>Experiência em projetos reais e inovadores</li>
-                        <li>Metodologias de ensino modernas e práticas</li>
-                        <li>Mentoria personalizada para projetos</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Pesquisa com egressos 2024<br>
-                        <strong>Descrição:</strong> Levantamento sobre qualificação e experiência do corpo docente
-                    </div>`
-                },
-                'infraestrutura': {
-                    title: 'Infraestrutura Moderna',
-                    text: `<p>Contamos com laboratórios equipados com tecnologia de ponta para proporcionar a melhor experiência de aprendizado.</p>
-                    <p><strong>Recursos disponíveis:</strong></p>
-                    <ul>
-                        <li>Laboratórios de desenvolvimento com computadores de última geração</li>
-                        <li>Servidores dedicados para projetos</li>
-                        <li>Acesso a plataformas cloud (AWS, Azure, Google Cloud)</li>
-                        <li>Biblioteca física e digital com acervo atualizado</li>
-                        <li>Espaços de coworking para projetos em grupo</li>
-                        <li>Auditórios equipados para eventos e palestras</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Relatório de Infraestrutura 2024<br>
-                        <strong>Descrição:</strong> Inventário detalhado dos recursos tecnológicos disponíveis
-                    </div>`
-                },
-                'networking': {
-                    title: 'Networking',
-                    text: `<p>Construa uma rede de contatos sólida que será fundamental para sua carreira profissional.</p>
-                    <p><strong>Oportunidades de networking:</strong></p>
-                    <ul>
-                        <li>Eventos mensais com profissionais do mercado</li>
-                        <li>Hackathons e competições de programação</li>
-                        <li>Feiras de tecnologia e inovação</li>
-                        <li>Programa de mentoria com ex-alunos</li>
-                        <li>Parcerias com mais de 200 empresas</li>
-                        <li>Grupos de estudo e comunidades ativas</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Dados de parcerias institucionais<br>
-                        <strong>Descrição:</strong> Registro atualizado de empresas conveniadas com o curso
-                    </div>`
-                },
-                'projetos': {
-                    title: 'Projetos Práticos',
-                    text: `<p>Desde o primeiro semestre, você desenvolverá projetos reais que farão parte do seu portfólio profissional.</p>
-                    <p><strong>Tipos de projetos:</strong></p>
-                    <ul>
-                        <li>Desenvolvimento de aplicações web e mobile</li>
-                        <li>Sistemas de gerenciamento empresarial</li>
-                        <li>Projetos de análise de dados e BI</li>
-                        <li>Soluções de segurança da informação</li>
-                        <li>Aplicações com inteligência artificial</li>
-                        <li>Projetos em parceria com empresas reais</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Portfólios de ex-alunos<br>
-                        <strong>Descrição:</strong> Análise de projetos reais desenvolvidos durante o curso
-                    </div>`
-                },
-                'certificacoes': {
-                    title: 'Certificações',
-                    text: `<p>Prepare-se para obter certificações internacionais reconhecidas que valorizam seu currículo.</p>
-                    <p><strong>Certificações disponíveis:</strong></p>
-                    <ul>
-                        <li>AWS Certified Solutions Architect</li>
-                        <li>Microsoft Azure Fundamentals</li>
-                        <li>CompTIA Security+</li>
-                        <li>Oracle Database Administrator</li>
-                        <li>Scrum Master Certification</li>
-                        <li>Google Cloud Professional</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Parcerias com certificadoras<br>
-                        <strong>Descrição:</strong> Convênios para preparação e certificação profissional
-                    </div>`
-                },
-                'programacao': {
-                    title: 'Programação e Algoritmos',
-                    text: `<p>Aprenda os fundamentos da programação e desenvolva o raciocínio lógico necessário para criar soluções eficientes.</p>
-                    <p><strong>Conteúdo programático:</strong></p>
-                    <ul>
-                        <li>Lógica de programação e algoritmos</li>
-                        <li>Estruturas de dados (listas, pilhas, filas, árvores)</li>
-                        <li>Programação orientada a objetos</li>
-                        <li>Análise de complexidade de algoritmos</li>
-                        <li>Linguagens: Python, Java, C++, JavaScript</li>
-                        <li>Boas práticas e padrões de código</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
-                        <strong>Descrição:</strong> Conteúdo baseado nas diretrizes curriculares nacionais
-                    </div>`
-                },
-                'banco-dados': {
-                    title: 'Banco de Dados',
-                    text: `<p>Domine a arte de armazenar, organizar e recuperar dados de forma eficiente e segura.</p>
-                    <p><strong>Conteúdo programático:</strong></p>
-                    <ul>
-                        <li>Modelagem de dados (conceitual, lógica e física)</li>
-                        <li>SQL avançado e otimização de queries</li>
-                        <li>Bancos relacionais: MySQL, PostgreSQL, Oracle</li>
-                        <li>Bancos NoSQL: MongoDB, Redis, Cassandra</li>
-                        <li>Administração e tuning de bancos de dados</li>
-                        <li>Big Data e Data Warehousing</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
-                        <strong>Descrição:</strong> Conteúdo alinhado com demandas do mercado
-                    </div>`
-                },
-                'engenharia': {
-                    title: 'Engenharia de Software',
-                    text: `<p>Aprenda a desenvolver software de qualidade usando metodologias e práticas modernas.</p>
-                    <p><strong>Conteúdo programático:</strong></p>
-                    <ul>
-                        <li>Metodologias ágeis (Scrum, Kanban, XP)</li>
-                        <li>Arquitetura de software e design patterns</li>
-                        <li>Testes automatizados (unitários, integração, E2E)</li>
-                        <li>DevOps e CI/CD</li>
-                        <li>Gestão de projetos de software</li>
-                        <li>Qualidade de software e refatoração</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
-                        <strong>Descrição:</strong> Baseado nas melhores práticas da indústria
-                    </div>`
-                },
-                'redes': {
-                    title: 'Redes e Segurança',
-                    text: `<p>Entenda como funcionam as redes de computadores e como proteger sistemas e dados.</p>
-                    <p><strong>Conteúdo programático:</strong></p>
-                    <ul>
-                        <li>Protocolos de rede (TCP/IP, HTTP, DNS)</li>
-                        <li>Configuração de redes e servidores</li>
-                        <li>Segurança da informação e criptografia</li>
-                        <li>Ethical hacking e testes de penetração</li>
-                        <li>Firewalls, VPNs e sistemas de detecção</li>
-                        <li>Compliance e normas de segurança (ISO 27001, LGPD)</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
-                        <strong>Descrição:</strong> Conteúdo atualizado com normas vigentes
-                    </div>`
-                },
-                'web': {
-                    title: 'Desenvolvimento Web',
-                    text: `<p>Crie aplicações web modernas, responsivas e escaláveis usando as tecnologias mais atuais.</p>
-                    <p><strong>Conteúdo programático:</strong></p>
-                    <ul>
-                        <li>HTML5, CSS3 e JavaScript moderno</li>
-                        <li>Frameworks front-end: React, Vue, Angular</li>
-                        <li>Back-end: Node.js, Python (Django/Flask), PHP</li>
-                        <li>APIs RESTful e GraphQL</li>
-                        <li>Responsive design e mobile-first</li>
-                        <li>Performance e otimização web</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
-                        <strong>Descrição:</strong> Tecnologias mais demandadas pelo mercado
-                    </div>`
-                },
-                'ia': {
-                    title: 'Inteligência Artificial',
-                    text: `<p>Entre no mundo da IA e aprenda a criar sistemas inteligentes que aprendem e evoluem.</p>
-                    <p><strong>Conteúdo programático:</strong></p>
-                    <ul>
-                        <li>Fundamentos de Machine Learning</li>
-                        <li>Deep Learning e redes neurais</li>
-                        <li>Processamento de linguagem natural (NLP)</li>
-                        <li>Visão computacional</li>
-                        <li>Frameworks: TensorFlow, PyTorch, Scikit-learn</li>
-                        <li>Ética em IA e vieses algorítmicos</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
-                        <strong>Descrição:</strong> Conteúdo da área em maior crescimento
-                    </div>`
-                },
-                'gestao': {
-                    title: 'Gestão de TI',
-                    text: `<p>Desenvolva habilidades de liderança e gestão para coordenar equipes e projetos de tecnologia.</p>
-                    <p><strong>Conteúdo programático:</strong></p>
-                    <ul>
-                        <li>Governança de TI (COBIT, ITIL)</li>
-                        <li>Gestão de projetos (PMI, PRINCE2)</li>
-                        <li>Estratégia e planejamento de TI</li>
-                        <li>Gestão de equipes e liderança</li>
-                        <li>Orçamento e custos de TI</li>
-                        <li>Transformação digital e inovação</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
-                        <strong>Descrição:</strong> Preparação para cargos de liderança
-                    </div>`
-                },
-                'cloud': {
-                    title: 'Cloud Computing',
-                    text: `<p>Domine as tecnologias de computação em nuvem que estão transformando a infraestrutura de TI.</p>
-                    <p><strong>Conteúdo programático:</strong></p>
-                    <ul>
-                        <li>Fundamentos de cloud computing</li>
-                        <li>AWS: EC2, S3, Lambda, RDS</li>
-                        <li>Microsoft Azure e Google Cloud Platform</li>
-                        <li>Containers: Docker e Kubernetes</li>
-                        <li>Serverless e microservices</li>
-                        <li>DevOps e automação de infraestrutura</li>
-                    </ul>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Grade Curricular Oficial<br>
-                        <strong>Descrição:</strong> Tecnologias essenciais para o futuro
-                    </div>`
-                },
-                'fullstack': {
-                    title: 'Desenvolvedor Full Stack',
-                    text: `<p>Profissional completo capaz de desenvolver aplicações do front-end ao back-end.</p>
-                    <p><strong>Responsabilidades:</strong></p>
-                    <ul>
-                        <li>Desenvolver interfaces de usuário responsivas</li>
-                        <li>Criar APIs e lógica de negócio no servidor</li>
-                        <li>Gerenciar bancos de dados</li>
-                        <li>Implementar autenticação e segurança</li>
-                        <li>Deploy e manutenção de aplicações</li>
-                    </ul>
-                    <p><strong>Salário médio:</strong> R$ 8.000 - R$ 15.000</p>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> LinkedIn Salary 2024<br>
-                        <strong>Descrição:</strong> Análise de demanda e remuneração no mercado
-                    </div>`
-                },
-                'analista-dados': {
-                    title: 'Analista de Dados',
-                    text: `<p>Transforme dados brutos em insights valiosos para decisões estratégicas.</p>
-                    <p><strong>Responsabilidades:</strong></p>
-                    <ul>
-                        <li>Coletar e processar grandes volumes de dados</li>
-                        <li>Criar dashboards e visualizações</li>
-                        <li>Realizar análises estatísticas</li>
-                        <li>Desenvolver modelos preditivos</li>
-                        <li>Apresentar insights para stakeholders</li>
-                    </ul>
-                    <p><strong>Salário médio:</strong> R$ 7.000 - R$ 14.000</p>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Pesquisa Setorial TI 2024<br>
-                        <strong>Descrição:</strong> Crescimento exponencial da área de analytics
-                    </div>`
-                },
-                'arquiteto': {
-                    title: 'Arquiteto de Soluções',
-                    text: `<p>Projete sistemas complexos, escaláveis e eficientes para grandes organizações.</p>
-                    <p><strong>Responsabilidades:</strong></p>
-                    <ul>
-                        <li>Definir arquitetura de sistemas</li>
-                        <li>Escolher tecnologias e ferramentas</li>
-                        <li>Garantir escalabilidade e performance</li>
-                        <li>Liderar equipes técnicas</li>
-                        <li>Documentar soluções e padrões</li>
-                    </ul>
-                    <p><strong>Salário médio:</strong> R$ 12.000 - R$ 25.000</p>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Glassdoor e Catho 2024<br>
-                        <strong>Descrição:</strong> Demanda por arquitetura corporativa
-                    </div>`
-                },
-                'seguranca': {
-                    title: 'Especialista em Segurança',
-                    text: `<p>Proteja sistemas, redes e dados contra ameaças cibernéticas.</p>
-                    <p><strong>Responsabilidades:</strong></p>
-                    <ul>
-                        <li>Realizar testes de penetração</li>
-                        <li>Implementar políticas de segurança</li>
-                        <li>Monitorar e responder a incidentes</li>
-                        <li>Auditar sistemas e processos</li>
-                        <li>Treinar equipes em boas práticas</li>
-                    </ul>
-                    <p><strong>Salário médio:</strong> R$ 9.000 - R$ 18.000</p>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Cybersecurity Ventures 2024<br>
-                        <strong>Descrição:</strong> Projeção do mercado de segurança da informação
-                    </div>`
-                },
-                'gestor': {
-                    title: 'Gestor de TI',
-                    text: `<p>Lidere equipes e projetos de tecnologia em empresas de todos os portes.</p>
-                    <p><strong>Responsabilidades:</strong></p>
-                    <ul>
-                        <li>Gerenciar equipes de desenvolvimento</li>
-                        <li>Planejar e executar projetos</li>
-                        <li>Controlar orçamentos e recursos</li>
-                        <li>Alinhar TI com objetivos de negócio</li>
-                        <li>Implementar processos e metodologias</li>
-                    </ul>
-                    <p><strong>Salário médio:</strong> R$ 10.000 - R$ 20.000</p>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Pesquisa de Carreiras 2024<br>
-                        <strong>Descrição:</strong> Evolução natural para cargos de liderança
-                    </div>`
-                },
-                'consultor': {
-                    title: 'Consultor de TI',
-                    text: `<p>Auxilie empresas na transformação digital e otimização de processos.</p>
-                    <p><strong>Responsabilidades:</strong></p>
-                    <ul>
-                        <li>Analisar processos e sistemas atuais</li>
-                        <li>Propor soluções tecnológicas</li>
-                        <li>Implementar melhorias e inovações</li>
-                        <li>Treinar equipes e usuários</li>
-                        <li>Acompanhar resultados e ROI</li>
-                    </ul>
-                    <p><strong>Salário médio:</strong> R$ 8.000 - R$ 16.000</p>
-                    <div class="source-info">
-                        <strong>Fonte:</strong> Dados do setor de consultoria<br>
-                        <strong>Descrição:</strong> Mercado em expansão para consultoria em TI
-                    </div>`
-                }
-            };
-            
-            const info = content[topic];
+            const info = infoContent[topic];
             if (info) {
-                infoContent.innerHTML = <h3>${info.title}</h3>${info.text};
+                contentDiv.innerHTML = `<h3>${info.title}</h3>${info.text}`;
                 modal.classList.add('active');
             }
         }
