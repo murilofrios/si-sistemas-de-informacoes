@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carreiras - NEXUS SI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --neon-red: #ff0844;
+            --neon-gray: #8b8b8b;
+            --gradient-neon: linear-gradient(135deg, #ff0844 0%, #8b8b8b 100%);
+            --gradient-neon-reverse: linear-gradient(135deg, #8b8b8b 0%, #ff0844 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 8, 68, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--gradient-neon);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-red);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-neon);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            padding: 0.6rem 1.5rem;
+            background: var(--gradient-neon);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 8, 68, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--neon-red);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 8, 68, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(139, 139, 139, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-neon);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: var(--gradient-neon);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Careers Grid */
+        .careers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .career-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 8, 68, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .career-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-neon);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .career-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .career-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 8, 68, 0.2);
+        }
+
+        .career-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-neon);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .career-card h3 {
+            color: var(--neon-red);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .career-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding: 1rem 0;
+            border-top: 1px solid rgba(255, 8, 68, 0.2);
+            border-bottom: 1px solid rgba(255, 8, 68, 0.2);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--neon-red);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .career-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(255, 8, 68, 0.1);
+            border: 1px solid var(--neon-red);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--neon-red);
+        }
+
+        /* Market Overview */
+        .market-overview {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 8, 68, 0.2);
+            margin: 3rem 0;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .overview-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .overview-item h4 {
+            color: var(--neon-red);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .overview-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 5%;
+            background: var(--bg-card);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 8, 68, 0.2);
+            margin: 4rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-neon);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(255, 8, 68, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--neon-red);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--neon-red);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-neon);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(139, 139, 139, 0.2);
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.98);
+                width: 100%;
+                padding: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .careers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .career-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">NEXUS SI</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="index.html#grade">Grade</a></li>
+                <li><a href="index.html#mercado">Mercado</a></li>
+                <li><a href="carreiras.html" style="color: var(--neon-red);">Carreiras</a></li>
+                <li><a href="cadastro.html" class="btn-primary">Inscreva-se</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Explore as Carreiras em TI</h1>
+            <p>Descubra as diversas oportunidades que o curso de Sistemas de Informação oferece no mercado de trabalho</p>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section>
+        <h2 class="section-title">Principais Carreiras</h2>
+        <div class="careers-grid">
+            <!-- Desenvolvedor Full Stack -->
+            <div class="career-card">
+                <div class="career-icon">💻</div>
+                <h3>Desenvolvedor Full Stack</h3>
+                <p>Profissional completo que domina tanto o desenvolvimento front-end quanto back-end, criando aplicações web completas e escaláveis.</p>
+                
+                <div class="career-stats">
+                    <div class="stat">
+                        <span class="stat-value">R$ 8.5k</span>
+                        <span class="stat-label">Salário Médio</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">95%</span>
+                        <span class="stat-label">Empregabilidade</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">4.8/5</span>
+                        <span class="stat-label">Satisfação</span>
+                    </div>
+                </div>
+
+                <div class="career-skills">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+
+                <a href="#fullstack-details" class="btn-primary" style="width: 100%; text-align: center;">Ver Detalhes</a>
+            </div>
+
+            <!-- Analista de Dados -->
+            <div class="career-card">
+                <div class="career-icon">📊</div>
+                <h3>Analista de Dados</h3>
+                <p>Transforma dados brutos em insights valiosos para tomada de decisões estratégicas nas organizações.</p>
+                
+                <div class="career-stats">
+                    <div class="stat">
+                        <span class="stat-value">R$ 7.2k</span>
+                        <span class="stat-label">Salário Médio</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">92%</span>
+                        <span class="stat-label">Empregabilidade</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">4.6/5</span>
+                        <span class="stat-label">Satisfação</span>
+                    </div>
+                </div>
+
+                <div class="career-skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Estatística</span>
+                </div>
+
+                <a href="#dados-details" class="btn-primary" style="width: 100%; text-align: center;">Ver Detalhes</a>
+            </div>
+
+            <!-- Especialista em Segurança -->
+            <div class="career-card">
+                <div class="career-icon">🔒</div>
+                <h3>Especialista em Segurança</h3>
+                <p>Protege sistemas, redes e dados contra ameaças cibernéticas, implementando políticas e tecnologias de segurança.</p>
+                
+                <div class="career-stats">
+                    <div class="stat">
+                        <span class="stat-value">R$ 9.8k</span>
+                        <span class="stat-label">Salário Médio</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">98%</span>
+                        <span class="stat-label">Empregabilidade</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">4.9/5</span>
+                        <span class="stat-label">Satisfação</span>
+                    </div>
+                </div>
+
+                <div class="career-skills">
+                    <span class="skill-tag">Cibersegurança</span>
+                    <span class="skill-tag">Redes</span>
+                    <span class="skill-tag">Ethical Hacking</span>
+                    <span class="skill-tag">Firewalls</span>
+                </div>
+
+                <a href="#seguranca-details" class="btn-primary" style="width: 100%; text-align: center;">Ver Detalhes</a>
+            </div>
+
+            <!-- Arquiteto de Soluções -->
+            <div class="career-card">
+                <div class="career-icon">🏗️</div>
+                <h3>Arquiteto de Soluções</h3>
+                <p>Projeta sistemas complexos e escaláveis, definindo tecnologias, padrões e melhores práticas de desenvolvimento.</p>
+                
+                <div class="career-stats">
+                    <div class="stat">
+                        <span class="stat-value">R$ 15k</span>
+                        <span class="stat-label">Salário Médio</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">90%</span>
+                        <span class="stat-label">Empregabilidade</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">4.7/5</span>
+                        <span class="stat-label">Satisfação</span>
+                    </div>
+                </div>
+
+                <div class="career-skills">
+                    <span class="skill-tag">Arquitetura</span>
+                    <span class="skill-tag">Cloud</span>
+                    <span class="skill-tag">Microservices</span>
+                    <span class="skill-tag">DevOps</span>
+                </div>
+
+                <a href="#arquiteto-details" class="btn-primary" style="width: 100%; text-align: center;">Ver Detalhes</a>
+            </div>
+
+            <!-- Engenheiro DevOps -->
+            <div class="career-card">
+                <div class="career-icon">⚙️</div>
+                <h3>Engenheiro DevOps</h3>
+                <p>Automatiza processos de desenvolvimento, integração e deploy, garantindo eficiência e confiabilidade nos pipelines.</p>
+                
+                <div class="career-stats">
+                    <div class="stat">
+                        <span class="stat-value">R$ 11k</span>
+                        <span class="stat-label">Salário Médio</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">94%</span>
+                        <span class="stat-label">Empregabilidade</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">4.8/5</span>
+                        <span class="stat-label">Satisfação</span>
+                    </div>
+                </div>
+
+                <div class="career-skills">
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">AWS</span>
+                </div>
+
+                <a href="#devops-details" class="btn-primary" style="width: 100%; text-align: center;">Ver Detalhes</a>
+            </div>
+
+            <!-- Gestor de TI -->
+            <div class="career-card">
+                <div class="career-icon">👨‍💼</div>
+                <h3>Gestor de TI</h3>
+                <p>Lidera equipes e projetos tecnológicos, alinhando estratégias de TI com os objetivos de negócio da organização.</p>
+                
+                <div class="career-stats">
+                    <div class="stat">
+                        <span class="stat-value">R$ 12k</span>
+                        <span class="stat-label">Salário Médio</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">88%</span>
+                        <span class="stat-label">Empregabilidade</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">4.5/5</span>
+                        <span class="stat-label">Satisfação</span>
+                    </div>
+                </div>
+
+                <div class="career-skills">
+                    <span class="skill-tag">Liderança</span>
+                    <span class="skill-tag">PMO</span>
+                    <span class="skill-tag">ITIL</span>
+                    <span class="skill-tag">Estratégia</span>
+                </div>
+
+                <a href="#gestor-details" class="btn-primary" style="width: 100%; text-align: center;">Ver Detalhes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Overview -->
+    <section>
+        <h2 class="section-title">Panorama do Mercado</h2>
+        <div class="market-overview">
+            <h3 style="text-align: center; color: var(--neon-red); margin-bottom: 2rem;">Por que escolher TI?</h3>
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <h4>🌎 Mercado Global</h4>
+                    <p>O setor de tecnologia cresce 3x mais rápido que a economia mundial, com demanda constante por profissionais qualificados.</p>
+                </div>
+                <div class="overview-item">
+                    <h4>💼 Diversidade</h4>
+                    <p>Atuação em diversos setores: saúde, financeiro, varejo, educação, governo e muito mais.</p>
+                </div>
+                <div class="overview-item">
+                    <h4>🚀 Inovação</h4>
+                    <p>Trabalhe com as tecnologias mais modernas e participe da transformação digital das empresas.</p>
+                </div>
+                <div class="overview-item">
+                    <h4>📈 Progressão</h4>
+                    <p>Plano de carreira claro com oportunidades de crescimento rápido e especialização.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Pronto para Iniciar sua Jornada?</h2>
+        <p>Junte-se ao NEXUS SI e prepare-se para uma carreira de sucesso na área de tecnologia. Com nossa formação completa, você estará preparado para os desafios do mercado.</p>
+        <a href="cadastro.html" class="btn-primary" style="padding: 1rem 2.5rem; font-size: 1.2rem;">Inscreva-se Agora</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>NEXUS SI</h3>
+                <p style="color: var(--text-secondary); line-height: 1.8;">Formando profissionais de excelência para o mercado de tecnologia desde 2005.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">i</a>
+                    <a href="#" title="LinkedIn">in</a>
+                    <a href="#" title="Twitter">t</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="index.html#sobre">Sobre o Curso</a></li>
+                    <li><a href="index.html#grade">Grade Curricular</a></li>
+                    <li><a href="index.html#mercado">Mercado de Trabalho</a></li>
+                    <li><a href="carreiras.html">Carreiras</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="tel:+5511999999999">📞 (11) 99999-9999</a></li>
+                    <li><a href="mailto:contato@nexussi.edu.br">✉️ contato@nexussi.edu.br</a></li>
+                    <li><a href="#">📍 Rua da Tecnologia, 123</a></li>
+                    <li><a href="#">🕐 Seg-Sex: 8h às 18h</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Recursos</h3>
+                <ul>
+                    <li><a href="cadastro.html">Inscreva-se</a></li>
+                    <li><a href="#">Portal do Aluno</a></li>
+                    <li><a href="#">Biblioteca Virtual</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NEXUS SI. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth Scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.career-card, .overview-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
