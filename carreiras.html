@@ -420,6 +420,76 @@
             color: var(--text-secondary);
         }
 
+        /* Info Modal for career details */
+        .info-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-modal.active {
+            display: flex;
+        }
+
+        .info-modal-content {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            border: 2px solid var(--neon-red);
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .info-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .info-modal-close:hover {
+            color: var(--neon-red);
+        }
+
+        .info-modal h3 {
+            color: var(--neon-red);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .info-modal p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .info-modal ul {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-modal ul li {
+            margin-bottom: 0.5rem;
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -429,6 +499,17 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
             }
         }
 
@@ -476,6 +557,11 @@
 
             .overview-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .info-modal-content {
+                padding: 2rem;
+                max-height: 90vh;
             }
         }
     </style>
@@ -541,7 +627,7 @@
                     <span class="skill-tag">SQL</span>
                 </div>
 
-                <a href="#fullstack-details" class="btn-primary" style="width: 100%; text-align: center;">Ver Detalhes</a>
+                <button class="btn-primary" style="width: 100%; text-align: center;" onclick="showCareerDetails('fullstack')">Ver Detalhes</button>
             </div>
 
             <!-- Analista de Dados -->
@@ -572,7 +658,7 @@
                     <span class="skill-tag">Estatística</span>
                 </div>
 
-                <a href="#dados-details" class="btn-primary" style="width: 100%; text-align: center;">Ver Detalhes</a>
+                <button class="btn-primary" style="width: 100%; text-align: center;" onclick="showCareerDetails('analista-dados')">Ver Detalhes</button>
             </div>
 
             <!-- Especialista em Segurança -->
@@ -603,7 +689,7 @@
                     <span class="skill-tag">Firewalls</span>
                 </div>
 
-                <a href="#seguranca-details" class="btn-primary" style="width: 100%; text-align: center;">Ver Detalhes</a>
+                <button class="btn-primary" style="width: 100%; text-align: center;" onclick="showCareerDetails('seguranca')">Ver Detalhes</button>
             </div>
 
             <!-- Arquiteto de Soluções -->
@@ -634,7 +720,7 @@
                     <span class="skill-tag">DevOps</span>
                 </div>
 
-                <a href="#arquiteto-details" class="btn-primary" style="width: 100%; text-align: center;">Ver Detalhes</a>
+                <button class="btn-primary" style="width: 100%; text-align: center;" onclick="showCareerDetails('arquiteto')">Ver Detalhes</button>
             </div>
 
             <!-- Engenheiro DevOps -->
@@ -665,7 +751,7 @@
                     <span class="skill-tag">AWS</span>
                 </div>
 
-                <a href="#devops-details" class="btn-primary" style="width: 100%; text-align: center;">Ver Detalhes</a>
+                <button class="btn-primary" style="width: 100%; text-align: center;" onclick="showCareerDetails('devops')">Ver Detalhes</button>
             </div>
 
             <!-- Gestor de TI -->
@@ -696,7 +782,7 @@
                     <span class="skill-tag">Estratégia</span>
                 </div>
 
-                <a href="#gestor-details" class="btn-primary" style="width: 100%; text-align: center;">Ver Detalhes</a>
+                <button class="btn-primary" style="width: 100%; text-align: center;" onclick="showCareerDetails('gestor')">Ver Detalhes</button>
             </div>
         </div>
     </section>
@@ -741,10 +827,10 @@
                 <h3>NEXUS SI</h3>
                 <p style="color: var(--text-secondary); line-height: 1.8;">Formando profissionais de excelência para o mercado de tecnologia desde 2005.</p>
                 <div class="social-links">
-                    <a href="#" title="Facebook">f</a>
-                    <a href="#" title="Instagram">i</a>
-                    <a href="#" title="LinkedIn">in</a>
-                    <a href="#" title="Twitter">t</a>
+                    <a href="https://facebook.com" target="_blank" title="Facebook">f</a>
+                    <a href="https://instagram.com" target="_blank" title="Instagram">i</a>
+                    <a href="https://linkedin.com" target="_blank" title="LinkedIn">in</a>
+                    <a href="https://twitter.com" target="_blank" title="Twitter">t</a>
                 </div>
             </div>
             <div class="footer-section">
@@ -761,7 +847,7 @@
                 <ul>
                     <li><a href="tel:+5511999999999">📞 (11) 99999-9999</a></li>
                     <li><a href="mailto:contato@nexussi.edu.br">✉️ contato@nexussi.edu.br</a></li>
-                    <li><a href="#">📍 Rua da Tecnologia, 123</a></li>
+                    <li><a href="https://maps.google.com/?q=Rua+da+Tecnologia,123,São+Paulo,SP" target="_blank">📍 Rua da Tecnologia, 123</a></li>
                     <li><a href="#">🕐 Seg-Sex: 8h às 18h</a></li>
                 </ul>
             </div>
@@ -769,9 +855,9 @@
                 <h3>Recursos</h3>
                 <ul>
                     <li><a href="cadastro.html">Inscreva-se</a></li>
-                    <li><a href="#">Portal do Aluno</a></li>
-                    <li><a href="#">Biblioteca Virtual</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="https://portal.nexussi.edu.br" target="_blank">Portal do Aluno</a></li>
+                    <li><a href="https://biblioteca.nexussi.edu.br" target="_blank">Biblioteca Virtual</a></li>
+                    <li><a href="https://faq.nexussi.edu.br" target="_blank">FAQ</a></li>
                 </ul>
             </div>
         </div>
@@ -780,11 +866,234 @@
         </div>
     </footer>
 
+    <!-- Info Modal for career details -->
+    <div class="info-modal" id="careerModal">
+        <div class="info-modal-content">
+            <button class="info-modal-close" onclick="closeCareerModal()">&times;</button>
+            <div id="careerContent"></div>
+        </div>
+    </div>
+
     <script>
         // Mobile Menu Toggle
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
+        }
+
+        // Career Details Modal Functions
+        function showCareerDetails(career) {
+            const contentDiv = document.getElementById('careerContent');
+            const modal = document.getElementById('careerModal');
+            
+            const careerDetails = {
+                'fullstack': {
+                    title: 'Desenvolvedor Full Stack',
+                    content: `
+                        <h3>Desenvolvedor Full Stack</h3>
+                        <p>Profissional completo capaz de desenvolver aplicações do front-end ao back-end.</p>
+                        
+                        <p><strong>Responsabilidades:</strong></p>
+                        <ul>
+                            <li>Desenvolver interfaces de usuário responsivas e modernas</li>
+                            <li>Criar APIs RESTful e GraphQL para comunicação entre sistemas</li>
+                            <li>Gerenciar bancos de dados relacionais e não-relacionais</li>
+                            <li>Implementar autenticação, autorização e segurança</li>
+                            <li>Realizar deploy e manutenção de aplicações em produção</li>
+                            <li>Otimizar performance e experiência do usuário</li>
+                        </ul>
+                        
+                        <p><strong>Tecnologias Principais:</strong></p>
+                        <ul>
+                            <li>Front-end: React, Vue.js, Angular, TypeScript</li>
+                            <li>Back-end: Node.js, Python, Java, .NET</li>
+                            <li>Banco de Dados: MySQL, PostgreSQL, MongoDB</li>
+                            <li>DevOps: Docker, AWS, Azure, Git</li>
+                        </ul>
+                        
+                        <p><strong>Salário Médio:</strong> R$ 8.000 - R$ 15.000</p>
+                        <p><strong>Nível de Experiência:</strong> Júnior a Sênior</p>
+                        <p><strong>Demanda no Mercado:</strong> Muito Alta</p>
+                        
+                        <p>Uma das carreiras mais versáteis e demandadas do mercado, com oportunidades em startups, empresas de tecnologia e grandes corporações.</p>
+                    `
+                },
+                'analista-dados': {
+                    title: 'Analista de Dados',
+                    content: `
+                        <h3>Analista de Dados</h3>
+                        <p>Transforme dados brutos em insights valiosos para decisões estratégicas.</p>
+                        
+                        <p><strong>Responsabilidades:</strong></p>
+                        <ul>
+                            <li>Coletar, limpar e processar grandes volumes de dados</li>
+                            <li>Criar dashboards e relatórios interativos</li>
+                            <li>Realizar análises estatísticas e preditivas</li>
+                            <li>Desenvolver modelos de machine learning</li>
+                            <li>Apresentar insights para stakeholders</li>
+                            <li>Identificar tendências e oportunidades de negócio</li>
+                        </ul>
+                        
+                        <p><strong>Tecnologias Principais:</strong></p>
+                        <ul>
+                            <li>Linguagens: Python, R, SQL</li>
+                            <li>Ferramentas: Power BI, Tableau, Excel</li>
+                            <li>Banco de Dados: SQL Server, PostgreSQL, BigQuery</li>
+                            <li>Análise: Pandas, NumPy, Scikit-learn</li>
+                        </ul>
+                        
+                        <p><strong>Salário Médio:</strong> R$ 7.000 - R$ 14.000</p>
+                        <p><strong>Nível de Experiência:</strong> Júnior a Sênior</p>
+                        <p><strong>Demanda no Mercado:</strong> Crescente</p>
+                        
+                        <p>Área em crescimento exponencial com alta demanda em setores como varejo, financeiro, saúde e tecnologia.</p>
+                    `
+                },
+                'seguranca': {
+                    title: 'Especialista em Segurança',
+                    content: `
+                        <h3>Especialista em Segurança</h3>
+                        <p>Proteja sistemas, redes e dados contra ameaças cibernéticas.</p>
+                        
+                        <p><strong>Responsabilidades:</strong></p>
+                        <ul>
+                            <li>Realizar testes de penetração e vulnerabilidade</li>
+                            <li>Implementar políticas de segurança da informação</li>
+                            <li>Monitorar e responder a incidentes de segurança</li>
+                            <li>Auditar sistemas e processos</li>
+                            <li>Gerenciar firewalls e sistemas de detecção</li>
+                            <li>Treinar equipes em boas práticas de segurança</li>
+                        </ul>
+                        
+                        <p><strong>Tecnologias Principais:</strong></p>
+                        <ul>
+                            <li>Ferramentas: Kali Linux, Metasploit, Wireshark</li>
+                            <li>Segurança: Firewalls, IDS/IPS, SIEM</li>
+                            <li>Certificações: CEH, CISSP, Security+</li>
+                            <li>Redes: TCP/IP, VPN, DNS Security</li>
+                        </ul>
+                        
+                        <p><strong>Salário Médio:</strong> R$ 9.000 - R$ 18.000</p>
+                        <p><strong>Nível de Experiência:</strong> Pleno a Sênior</p>
+                        <p><strong>Demanda no Mercado:</strong> Muito Alta</p>
+                        
+                        <p>Área crítica com demanda crescente e excelente remuneração, especialmente com a LGPD e outras regulamentações.</p>
+                    `
+                },
+                'arquiteto': {
+                    title: 'Arquiteto de Soluções',
+                    content: `
+                        <h3>Arquiteto de Soluções</h3>
+                        <p>Projete sistemas complexos, escaláveis e eficientes para grandes organizações.</p>
+                        
+                        <p><strong>Responsabilidades:</strong></p>
+                        <ul>
+                            <li>Definir arquitetura de sistemas e microservices</li>
+                            <li>Escolher tecnologias e ferramentas apropriadas</li>
+                            <li>Garantir escalabilidade, performance e segurança</li>
+                            <li>Liderar equipes técnicas e definir padrões</li>
+                            <li>Documentar soluções e padrões arquiteturais</li>
+                            <li>Avaliar e migrar sistemas legados</li>
+                        </ul>
+                        
+                        <p><strong>Tecnologias Principais:</strong></p>
+                        <ul>
+                            <li>Arquitetura: Microservices, Serverless, Event-Driven</li>
+                            <li>Cloud: AWS, Azure, Google Cloud</li>
+                            <li>Containers: Docker, Kubernetes, OpenShift</li>
+                            <li>Padrões: Design Patterns, DDD, CQRS</li>
+                        </ul>
+                        
+                        <p><strong>Salário Médio:</strong> R$ 12.000 - R$ 25.000</p>
+                        <p><strong>Nível de Experiência:</strong> Sênior</p>
+                        <p><strong>Demanda no Mercado:</strong> Alta</p>
+                        
+                        <p>Posição sênior com grande responsabilidade e remuneração, ideal para profissionais com ampla experiência técnica.</p>
+                    `
+                },
+                'devops': {
+                    title: 'Engenheiro DevOps',
+                    content: `
+                        <h3>Engenheiro DevOps</h3>
+                        <p>Automatiza processos de desenvolvimento, integração e deploy.</p>
+                        
+                        <p><strong>Responsabilidades:</strong></p>
+                        <ul>
+                            <li>Implementar pipelines de CI/CD</li>
+                            <li>Gerenciar infraestrutura como código</li>
+                            <li>Monitorar performance e disponibilidade</li>
+                            <li>Automatizar processos de deploy e rollback</li>
+                            <li>Gerenciar containers e orquestração</li>
+                            <li>Garantir segurança e compliance</li>
+                        </ul>
+                        
+                        <p><strong>Tecnologias Principais:</strong></p>
+                        <ul>
+                            <li>CI/CD: Jenkins, GitLab CI, GitHub Actions</li>
+                            <li>Containers: Docker, Kubernetes, Podman</li>
+                            <li>Cloud: AWS, Azure, GCP, Terraform</li>
+                            <li>Monitoramento: Prometheus, Grafana, ELK</li>
+                        </ul>
+                        
+                        <p><strong>Salário Médio:</strong> R$ 11.000 - R$ 20.000</p>
+                        <p><strong>Nível de Experiência:</strong> Pleno a Sênior</p>
+                        <p><strong>Demanda no Mercado:</strong> Muito Alta</p>
+                        
+                        <p>Área essencial para empresas que buscam agilidade e confiabilidade em seus processos de desenvolvimento.</p>
+                    `
+                },
+                'gestor': {
+                    title: 'Gestor de TI',
+                    content: `
+                        <h3>Gestor de TI</h3>
+                        <p>Lidere equipes e projetos de tecnologia em empresas de todos os portes.</p>
+                        
+                        <p><strong>Responsabilidades:</strong></p>
+                        <ul>
+                            <li>Gerenciar equipes de desenvolvimento e infraestrutura</li>
+                            <li>Planejar e executar projetos de TI</li>
+                            <li>Controlar orçamentos e recursos</li>
+                            <li>Alinhar TI com objetivos de negócio</li>
+                            <li>Implementar processos e metodologias ágeis</li>
+                            <li>Gerenciar fornecedores e contratos</li>
+                        </ul>
+                        
+                        <p><strong>Habilidades Principais:</strong></p>
+                        <ul>
+                            <li>Liderança e gestão de pessoas</li>
+                            <li>Gestão de projetos (PMI, Agile, Scrum)</li>
+                            <li>Governança de TI (COBIT, ITIL)</li>
+                            <li>Orçamento e finanças</li>
+                            <li>Comunicação e negociação</li>
+                        </ul>
+                        
+                        <p><strong>Salário Médio:</strong> R$ 10.000 - R$ 20.000</p>
+                        <p><strong>Nível de Experiência:</strong> Sênior</p>
+                        <p><strong>Demanda no Mercado:</strong> Alta</p>
+                        
+                        <p>Carreira de liderança com grande impacto organizacional, ideal para profissionais que combinam conhecimento técnico com habilidades de gestão.</p>
+                    `
+                }
+            };
+            
+            const details = careerDetails[career];
+            if (details) {
+                contentDiv.innerHTML = details.content;
+                modal.classList.add('active');
+            }
+        }
+
+        function closeCareerModal() {
+            const modal = document.getElementById('careerModal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('careerModal');
+            if (event.target === modal) {
+                closeCareerModal();
+            }
         }
 
         // Smooth Scroll for internal links
