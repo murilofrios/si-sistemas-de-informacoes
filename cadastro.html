@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Sistemas de Informação</title>
+    <title>Inscrição - NEXUS SI</title>
     <style>
         * {
             margin: 0;
@@ -311,13 +310,14 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">SI | Sistemas de Informação</div>
+            <div class="logo">NEXUS SI</div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Início</a></li>
                 <li><a href="index.html#sobre">Sobre</a></li>
                 <li><a href="index.html#grade">Grade</a></li>
                 <li><a href="index.html#mercado">Mercado</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="carreiras.html">Carreiras</a></li>
+                <li><a href="cadastro.html" style="color: var(--neon-red);">Inscreva-se</a></li>
             </ul>
             <div class="mobile-menu" onclick="toggleMenu()">
                 <span></span>
@@ -330,26 +330,24 @@
     <!-- Main Content -->
     <main>
         <div class="form-header">
-            <h1>Cadastre-se Agora</h1>
+            <h1>Inscreva-se Agora</h1>
             <p>Preencha o formulário abaixo e dê o primeiro passo para transformar seu futuro na área de tecnologia!</p>
         </div>
 
         <div class="success-message" id="successMessage">
-            Cadastro realizado com sucesso! Em breve entraremos em contato.
+            Inscrição realizada com sucesso! Em breve entraremos em contato.
         </div>
 
         <div class="error-message" id="errorMessage">
-            Ocorreu um erro ao processar seu cadastro. Por favor, tente novamente.
+            Ocorreu um erro ao processar sua inscrição. Por favor, tente novamente.
         </div>
 
         <form class="registration-form" id="registrationForm">
-            <!-- Removendo nome_completo e usando apenas nome -->
             <div class="form-group">
                 <label for="nome">Nome <span class="required">*</span></label>
                 <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
             </div>
 
-            <!-- Mantendo email e telefone em linha -->
             <div class="form-row">
                 <div class="form-group">
                     <label for="email">E-mail <span class="required">*</span></label>
@@ -362,19 +360,18 @@
                 </div>
             </div>
 
-            <!-- Adicionando campo de descrição opcional -->
             <div class="form-group">
                 <label for="descricao">Deixe uma mensagem (opcional)</label>
                 <textarea id="descricao" name="descricao" placeholder="Conte-nos um pouco sobre você ou deixe alguma dúvida..."></textarea>
             </div>
 
-            <button type="submit" class="btn-submit">Enviar Cadastro</button>
+            <button type="submit" class="btn-submit">Enviar Inscrição</button>
         </form>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Sistemas de Informação. Todos os direitos reservados.</p>
+        <p>&copy; 2025 NEXUS SI. Todos os direitos reservados.</p>
     </footer>
 
     <!-- Supabase JavaScript library - MUST load first -->
@@ -446,9 +443,9 @@
                         throw error;
                     }
                     
-                    console.log('[v0] Cadastro salvo com sucesso:', data);
+                    console.log('[v0] Inscrição salva com sucesso:', data);
                     
-                    successMessage.textContent = 'Cadastro realizado com sucesso! Redirecionando...';
+                    successMessage.textContent = 'Inscrição realizada com sucesso! Redirecionando...';
                     successMessage.classList.add('show');
                     form.reset();
                     
@@ -461,13 +458,13 @@
                     }, 3000);
                     
                 } catch (error) {
-                    console.error('[v0] Erro ao salvar cadastro:', error);
-                    errorMessage.textContent = error.message || 'Ocorreu um erro ao processar seu cadastro. Por favor, tente novamente.';
+                    console.error('[v0] Erro ao salvar inscrição:', error);
+                    errorMessage.textContent = error.message || 'Ocorreu um erro ao processar sua inscrição. Por favor, tente novamente.';
                     errorMessage.classList.add('show');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Enviar Cadastro';
+                    submitBtn.textContent = 'Enviar Inscrição';
                 }
             });
         });
